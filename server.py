@@ -15,28 +15,28 @@ auth_token = os.environ.get('TWILIO_TOKEN')
 def homepage():
     """ View Homepage. """
 
-    return render_template('homepage.html')
+    return render_template('base.html')
 
-@app.route('/subscribe', methods=['GET'])
-def show_subscribe():
-    """ Show subscription page. """
+# @app.route('/subscribe', methods=['GET'])
+# def show_subscribe():
+#     """ Show subscription page. """
 
-    return render_template('subscribe.html')
+#     return render_template('subscribe.html')
 
-@app.route('/subscribe', methods=['POST'])
-def process_subscribe():
-    """ Subscribe user to receive daily messages and save user's name and phone number to DB """
+# @app.route('/subscribe', methods=['POST'])
+# def process_subscribe():
+#     """ Subscribe user to receive daily messages and save user's name and phone number to DB """
 
-    return render_template('subscribe.html')
+#     return render_template('subscribe.html')
    
-@app.route('/success', methods=['GET'])
-def show_success():
+# @app.route('/success', methods=['GET'])
+# def show_success():
    
-    # user = request.args.get('fname')
-    # fname = request.cookies['fname']
-    fname = session['fname']
+#     # user = request.args.get('fname')
+#     # fname = request.cookies['fname']
+#     fname = session['fname']
 
-    return render_template('success.html', fname=fname)
+#     return render_template('success.html', fname=fname)
 
 
 if __name__ == '__main__': 
