@@ -25,9 +25,6 @@ function Homepage() {
     );
 }
 
-function Subscribe() {
-
-}
 
 
 ReactDOM.render(
