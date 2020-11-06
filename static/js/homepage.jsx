@@ -1,4 +1,6 @@
 
+// import "subscribe.jsx";
+
 function Homepage() {
     return (
         <div>
@@ -8,17 +10,17 @@ function Homepage() {
                     <p>
                         <ReactRouterDOM.Link to='/subscribe'>Subscribe</ReactRouterDOM.Link>
                     </p>
-                    {/* <p>
+                    <p>
                         <ReactRouterDOM.Link to='/about'>About us</ReactRouterDOM.Link>
-                    </p> */}
+                    </p>
                     <ReactRouterDOM.Switch>
                         <ReactRouterDOM.Route path='/subscribe'>
                             <Subscribe />
                         </ReactRouterDOM.Route>
                         {/* <ReactRouterDOM.Route path='/about'>
                             <About />
-                        </ReactRouterDOM.Route> */}
-                    </ReactRouterDOM.Switch>
+                        </ReactRouterDOM.Route>*/}
+                    </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>
             </nav>
         </div>
