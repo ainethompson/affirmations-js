@@ -5,24 +5,14 @@ import os
 import json
 from jinja2 import StrictUndefined
 
-# with open('data/secrets.json') as s:
-#     secret_data = json.load(s)
-
-secrets_json = open('data/secrets.json').read()
-
-secrets_dict = json.loads(secrets_json)
-
-# secrets_dict = secrets_object.items()
+secrets_dict = json.loads(open('data/secrets.json').read())
 
 app = Flask(__name__)
-app.secret_key = 'secret'
+app.secret_key = secrets_dict["APP_SECRET_KEY"]
 app.jinja_env.undefined = StrictUndefined
   
 twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
-
-
-# account_sid = os.environ.get('TWILIO_SID')
-# auth_token = os.environ.get('TWILIO_TOKEN')
+auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
 
 @app.route('/')
 def homepage():
