@@ -10,7 +10,7 @@ function Subscribe() {
         const { name, value } = target;
          setFormData(previousData => ({...previousData, [name]: value}));
      }
-
+// to do: use ajax to send user info to db on backend
      const handleSubmit = (event) => {
          event.preventDefault();
          console.log(formData);

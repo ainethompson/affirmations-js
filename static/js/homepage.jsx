@@ -17,9 +17,9 @@ function Homepage() {
                         <ReactRouterDOM.Route path='/subscribe'>
                             <Subscribe />
                         </ReactRouterDOM.Route>
-                        {/* <ReactRouterDOM.Route path='/about'>
+                        <ReactRouterDOM.Route path='/about'>
                             <About />
-                        </ReactRouterDOM.Route>*/}
+                        </ReactRouterDOM.Route>
                     </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>
             </nav>
@@ -32,6 +32,6 @@ function Homepage() {
 ReactDOM.render(
     <Homepage />,
     document.querySelector('#root')
-)
+);
 
 // Form from subscribe.html
