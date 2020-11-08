@@ -11,15 +11,12 @@ class User(db.Model):
     __tablename__ = "users"
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    fname = db.Column(db.String(25), nullable=False)
-    phone_num = db.Column(db.String(15), nullable=False)
-
-    # messages = db.relationship('Message', backref='users', secondary='users_messages')
-    # 'user-messages' = a list of UserMessage objects
+    name = db.Column(db.String, nullable=False)
+    phone_num = db.Column(db.String, nullable=False)
 
     def __repr__(self):
         """ Provide helpful representation when printed """
-        return f"<User_id = {self.user_id}, First name = {self.fname}, phone number = {self.phone_num}>"
+        return f"<User_id = {self.user_id}, First name = {self.name}, phone number = {self.phone_num}>"
 
 
 class Message(db.Model):
@@ -28,15 +25,12 @@ class Message(db.Model):
     __tablename__ = "messages"
 
     message_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    message_author = db.Column(db.Text)
-    message_text = db.Column(db.Text)
+    author = db.Column(db.Text)
+    text = db.Column(db.Text)
     sent = db.Column(db.Boolean, default=False, nullable=False)
-    
-    # users = db.relationship('User', backref='messages', secondary='users_messages')
-    # 'user-messages' = a list of UserMessage objects
 
     def __repr__(self):
-        return f"<id = {self.message_id}, author = {self.message_author}, text = {self.message_text}, sent = {self.sent}>"
+        return f"<id = {self.message_id}, author = {self.author}, text = {self.text}, sent = {self.sent}>"
 
 class UserMessage(db.Model):
     """ middle table between users and messages """
@@ -49,8 +43,6 @@ class UserMessage(db.Model):
 
     user = db.relationship('User', backref='users_messages')
     message = db.relationship('Message', backref='users_messages')
-
-    # 'user-messages' = a list of UserMessage objects
 
     def __repr__(self):
         return f"<user_message_id = {self.user_message_id}, user = {self.user}, message = {self.message}>"
