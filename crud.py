@@ -1,6 +1,7 @@
 """ CRUD operations. """
 from model import db, User, Message, UserMessage, connect_to_db
 from random import randint
+import pdb
 #Functions
 
 def create_user(fname, phone_num):

@@ -4,7 +4,6 @@ function Subscribe() {
 
      const [formData, setFormData] = React.useState({firstName: '', phoneNum: ''});
 
-    //  to do: use useEffect to make handleChange handle phone number and name 
      const handleChange = (event) => {
         const { target } = event;
         const { name, value } = target;
@@ -12,19 +11,21 @@ function Subscribe() {
      }
 // to do: use ajax to send user info to db on backend
      const handleSubmit = (event) => {
-         event.preventDefault();
+        //  event.preventDefault();
          console.log(formData);
         //  check if formData is empty -- set some error
+
          console.log(`A form was submitted: ${formData}`);
         //  ajax to send info to db
+        // if info sent to db, render success component
      }
 
      return (
-         <form onSubmit={handleSubmit}>
+         <form action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
              <div>
                 <label>
                     Name:
-                    <input type="text" name='firstName' value={formData.firstName} placeholder="First Name" onChange={handleChange} />
+                    <input type="text" id='firstName' name='firstName' value={formData.firstName} placeholder="First Name" onChange={handleChange} />
                 </label>
              </div>
              <div>
@@ -39,7 +40,9 @@ function Subscribe() {
 }
 
 
-
+// $.get('/subscribe', (res) => {
+//     $('#firstName').text(response)
+// })
 // to do: make conditional whether this will render
 
 function ToSubscribe() {

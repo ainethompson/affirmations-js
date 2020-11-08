@@ -1,9 +1,8 @@
 from twilio.rest import Client
 import json
-import os
 import model
 import crud
-
+from server import twilio_sid, auth_token
 import schedule
 import time
 from random import choice, randint
@@ -24,14 +23,10 @@ for phone_num in all_phones:
     
     phone_list.append(f'+1{raw_phone}') #  5109819837 --> +15109819837
 
-
 unsent_messages = crud.get_unsent_messages()
 
 def send_message():
-    account_sid = os.environ.get('TWILIO_SID')
-    auth_token = os.environ.get('TWILIO_TOKEN')
-    client = Client(account_sid, auth_token)
-
+    client = Client(twilio_sid, auth_token)
 
     i = randint(0, len(unsent_messages))
     to_send = unsent_messages[i]
@@ -42,7 +37,7 @@ def send_message():
     quote = f"✨ Note to self.... \n\n{text} \n\n- {author} ✨"
 
     twilio_number = '+15103300507'
-    # phone ='+15109819837'
+    phone ='+15109819837'
     for num in phone_list:
         phone = num
     

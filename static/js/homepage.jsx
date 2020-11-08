@@ -1,5 +1,4 @@
 
-// import "subscribe.jsx";
 
 function Homepage() {
     return (
@@ -13,12 +12,18 @@ function Homepage() {
                     <p>
                         <ReactRouterDOM.Link to='/about'>About us</ReactRouterDOM.Link>
                     </p>
+                    <p>
+                        <ReactRouterDOM.Link to='/success'></ReactRouterDOM.Link>
+                    </p>
                     <ReactRouterDOM.Switch>
                         <ReactRouterDOM.Route path='/subscribe'>
                             <Subscribe />
                         </ReactRouterDOM.Route>
                         <ReactRouterDOM.Route path='/about'>
                             <About />
+                        </ReactRouterDOM.Route>
+                        <ReactRouterDOM.Route path='/success'>
+                            <Success />
                         </ReactRouterDOM.Route>
                     </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>
@@ -34,4 +39,3 @@ ReactDOM.render(
     document.querySelector('#root')
 );
 
-// Form from subscribe.html

@@ -27,8 +27,11 @@ for message in message_data:
     messages_in_db.append(db_message)
 
 
-fname = model.User.fname
-phone_num = model.User.phone_num
+# fname = 'Shrek'
+# # model.User.fname
+# phone_num = '000-000-0000'
+# # model.User.phone_num
+phone_num = '510-981-9837'
 user = crud.create_user(fname, phone_num)
 
 # for message in sent messages:

@@ -20,11 +20,20 @@ def homepage():
 
     return render_template('base.html')
 
-# @app.route('/subscribe', methods=['GET'])
-# def show_subscribe():
-#     """ Show subscription page. """
 
-#     return render_template('subscribe.html')
+@app.route('/subscribe', methods=['GET'])
+def show_subscribe():
+    """ Show subscription page. """
+
+    return render_template('.html')
+
+
+@app.route('/api/subscribe', methods=['POST'])
+def subscribe():
+    # get form submission to work
+    # use ajax lab to generate post request
+    print('Subscribe the user')
+    return jsonify({'cats': 15})
 
 # @app.route('/subscribe', methods=['POST'])
 # def process_subscribe():
