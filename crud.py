@@ -4,15 +4,37 @@ from random import randint
 import pdb
 #Functions
 
-def create_user(fname, phone_num):
+def create_user(name, phone_num):
     """ create and return a new user. """
 
-    user = User(fname=fname, phone_num=phone_num)
+    user = User(name=name, phone_num=phone_num)
 
     db.session.add(user)
     db.session.commit()
 
     return user
+
+
+def create_message(author, text):
+    """ Create and return message. """
+
+    message = Message(author=author, text=text)
+
+    db.session.add(message)
+    db.session.commit()
+
+    return message
+
+
+def create_user_message(user, message):
+    """ Create and return 1 message for 1 user. """
+    user_message = UserMessage(user=user, message=message)
+
+    db.session.add(user_message)
+    db.session.commit()
+
+    return user_message
+
 
 def get_user_by_id(user_id):
     """Return a user by primary key."""
@@ -35,16 +57,6 @@ def get_all_phone_nums():
     return all_phone_nums
 
 
-def create_message(message_author, message_text):
-    """ Create and return message. """
-
-    message = Message(message_author=message_author, message_text=message_text)
-
-    db.session.add(message)
-    db.session.commit()
-
-    return message
-
 def get_message_by_id(message_id):
     """ Return message by id. """
     return Message.query.get(message_id)
@@ -60,15 +72,6 @@ def update_to_sent(message):
     message.sent = True
     db.session.commit()
     # UPDATE messages SET sent = TRUE
-
-def create_user_message(user_id, message_id):
-    """ Create and return 1 message for 1 user. """
-    user_message = UserMessage(user_id=user_id, message_id=message_id)
-
-    db.session.add(user_message)
-    db.session.commit()
-
-    return user_message
 
 def get_user_messages(user_id):
     """ return messages that this user has already received"""
