@@ -17,7 +17,8 @@ class User(db.Model):
     def __repr__(self):
         """ Provide helpful representation when printed """
         return f"<User_id = {self.user_id}, First name = {self.name}, phone number = {self.phone_num}>"
-
+# users_messages = list of UserMessage objects
+# call user.users_messages to get all messages a user has been sent
 
 class Message(db.Model):
     """ A message. """
@@ -31,6 +32,8 @@ class Message(db.Model):
 
     def __repr__(self):
         return f"<id = {self.message_id}, author = {self.author}, text = {self.text}, sent = {self.sent}>"
+# users_messages = list of UserMessage objects
+# call message.users_messages to get all users a message has been sent to
 
 class UserMessage(db.Model):
     """ middle table between users and messages """
@@ -45,7 +48,7 @@ class UserMessage(db.Model):
     message = db.relationship('Message', backref='users_messages')
 
     def __repr__(self):
-        return f"<user_message_id = {self.user_message_id}, user = {self.user}, message = {self.message}>"
+        return f"<user_message_id = {self.user_message_id}, user = {self.user.name}, message = {self.message.text}>"
 
 
 def connect_to_db(flask_app, db_uri='postgresql:///affirmations_db', echo=True):
