@@ -38,13 +38,14 @@ def subscribe():
 
 
 """ Test Route """
-# @app.route('/api/messages', methods=['GET'])
-# def get_messages():
-#     # messages = crud.get_messages
-#     messages = messages_in_db
-    
-#     # Message.query.all()
-#     return jsonify(messages)
+@app.route('/api/messages', methods=['GET'])
+def get_messages():
+    # messages = crud.get_messages
+    message_list = []
+    for message in crud.get_unsent_messages():
+        message_list.append({'author': message.author, 'text': message.text})
+    # Message.query.all()
+    return jsonify({'messages': message_list})
 
 # @app.route('/subscribe', methods=['POST'])
 # def process_subscribe():

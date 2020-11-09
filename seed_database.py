@@ -42,7 +42,7 @@ for message in message_data:
 
 """ Test Data """
 for n in range(10):
-    name = f'user #{n}'
+    name = f'test_user #{n}'
     phone_num = f'{n}{n}{n}-{n}{n}{n}-{n}{n}{n}{n}'
 
     user = crud.create_user(name, phone_num)
@@ -51,6 +51,11 @@ for n in range(10):
         random_message = choice(messages_in_db)
 
         crud.create_user_message(user, random_message)
+
+
+
+
+
 
 # Decode error, issue with decoding json object into python object?
 

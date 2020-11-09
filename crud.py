@@ -4,37 +4,16 @@ from random import randint
 import pdb
 #Functions
 
+""" USER FUNCTIONS """
+
 def create_user(name, phone_num):
     """ create and return a new user. """
 
     user = User(name=name, phone_num=phone_num)
-
     db.session.add(user)
     db.session.commit()
 
     return user
-
-
-def create_message(author, text):
-    """ Create and return message. """
-
-    message = Message(author=author, text=text)
-
-    db.session.add(message)
-    db.session.commit()
-
-    return message
-
-
-def create_user_message(user, message):
-    """ Create and return 1 message for 1 user. """
-    user_message = UserMessage(user=user, message=message)
-
-    db.session.add(user_message)
-    db.session.commit()
-
-    return user_message
-
 
 def get_user_by_id(user_id):
     """Return a user by primary key."""
@@ -57,21 +36,42 @@ def get_all_phone_nums():
     return all_phone_nums
 
 
+""" MESSAGE FUNCTIONS """
+
+def create_message(author, text):
+    """ Create and return message. """
+
+    message = Message(author=author, text=text)
+
+    db.session.add(message)
+    db.session.commit()
+
+    return message
+
 def get_message_by_id(message_id):
     """ Return message by id. """
     return Message.query.get(message_id)
 
 def get_unsent_messages():
     """ Return list of message_ids of messages that have not yet been sent out """
-    unsent_messages = Message.query.filter(Message.sent == False).all()
-
     # SELECT message_id FROM messages WHERE sent = False
-    return unsent_messages
+    return Message.query.filter(Message.sent == False).all()
 
 def update_to_sent(message):
     message.sent = True
     db.session.commit()
     # UPDATE messages SET sent = TRUE
+
+
+""" USERMESSAGE FUNCTIONS """
+def create_user_message(user, message):
+    """ Create and return 1 message for 1 user. """
+    user_message = UserMessage(user=user, message=message)
+
+    db.session.add(user_message)
+    db.session.commit()
+
+    return user_message
 
 def get_user_messages(user_id):
     """ return messages that this user has already received"""
