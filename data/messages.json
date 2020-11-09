@@ -1,9 +1,13 @@
 
 [
-    {"Author": "Arthur Ashe", "Text": "Start where you are. Use what you have. Do what you can."},
-    {"Author": "Will Rogers", "Text": "Don't let yesterday take up too much of today"},
-    {"Author": "Tracee Ellis Ross", "Text": "I am learning everyday to let the space between where I am and where I want to be inspire me and not terrify me"},
-    {"Author": "Smile Darling", "Text": "Do more things that make you forget to check your phone"},
+    {"Author": "Arthur Ashe", 
+        "Text": "Start where you are. Use what you have. Do what you can."},
+    {"Author": "Will Rogers", 
+        "Text": "Don't let yesterday take up too much of today"},
+    {"Author": "Tracee Ellis Ross", 
+        "Text": "I am learning everyday to let the space between where I am and where I want to be inspire me and not terrify me"},
+    {"Author": "Smile Darling", 
+        "Text": "Do more things that make you forget to check your phone"},
     {"Author": "Xan Oku", "Text": "May the flowers remind us why the rain was so necessary"},
     {"Author": "Unknown", "Text": "Remember when you so badly wanted what you currently have?"},
     {"Author": "Khanos", "Text": "There’s a future version of me who’s proud I was strong enough"},
@@ -66,16 +70,12 @@
     {"Author": "Idil Ahmed", "Text": "Forgive yourself for not knowing better. You're wiser now and you've learned so much to make better choices. It's a new day for you. End the guilt trip and regret. Move upwards and forward into your new desired state. Your mental shift will create a new world for you."},
     {"Author": "Idil Ahmed", "Text": "The moment you decide you want better for yourself is the minute the entire universe begins to shift in your favor. Your declaration, command, intentions, visions, and prayers begin the creation of a new reality. All you have to do today is decide and never look back."},
 
-    {"Author": "", "Text": ""},
+    {"Author": "", "Text": ""}
 ]
 
 
 
 
-
-
-
-]
 
 
 

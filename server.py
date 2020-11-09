@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import Message, connect_to_db
 import crud
-from seed_database import messages_in_db
+# from seed_database import messages_in_db
 import os
 import json
 from jinja2 import StrictUndefined
@@ -38,13 +38,13 @@ def subscribe():
 
 
 """ Test Route """
-@app.route('/api/messages', methods=['GET'])
-def get_messages():
-    # messages = crud.get_messages
-    messages = messages_in_db
+# @app.route('/api/messages', methods=['GET'])
+# def get_messages():
+#     # messages = crud.get_messages
+#     messages = messages_in_db
     
-    # Message.query.all()
-    return jsonify(messages)
+#     # Message.query.all()
+#     return jsonify(messages)
 
 # @app.route('/subscribe', methods=['POST'])
 # def process_subscribe():
