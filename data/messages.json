@@ -1,3 +1,4 @@
+
 [
     {"Author": "Arthur Ashe", "Text": "Start where you are. Use what you have. Do what you can."},
     {"Author": "Will Rogers", "Text": "Don't let yesterday take up too much of today"},
@@ -9,6 +10,7 @@
     {"Author": "Unknown", "Text": "Visualize your highest self, and start showing up as her"},
     {"Author": "Allison Aars", "Text": "When you finally learn that a person's behavior has more to do with their own internal struggle than it ever did with you... you learn grace"},
     {"Author": "Unknown", "Text": "You need people in your life that are further along than you, people that have a bigger vision, people that are more experienced, people that are out of your league. You need to be exposed to new levels so that you can go to new levels!"},
+    
     {"Author": "Unknown", "Text": "Perfectionism is a lie. Start messy."},
     {"Author": "Unknown", "Text": "Remember your goal and why you started"},
     {"Author": "Nancy Badillo", "Text": "It's your story, babe. Feel free to hit 'em with a plot twist whenever you want."},
@@ -19,12 +21,60 @@
     {"Author": "Cacchi Ricci", "Text": "It takes a very strong individual to sit with themselves, calm their storms, and heal all of their issues without trying to bring someone else into that chaos. My journey to self-love is just that and yes, I am doing it."},
     {"Author": "Kate Eckman", "Text": "Being okay if it happens and okay if it doesn't, is a very powerful place to be."},
     {"Author": "Unknown", "Text": "If you feel like everyone hates you, you need to sleep and if you feel like you hate everyone else, you need to eat"},
+    
     {"Author": "Mel Robbins", "Text": "The same boiling water that softens the potato, hardens the egg. It's about what you're made of, not the circumstances."},
     {"Author": "Unknown", "Text": "Replace 'sorry's' with 'thank you's'. Instead of 'sorry I'm late', try 'thank you for waiting on me'. Change your mindset."},
     {"Author": "Joyce Sunada", "Text": "If you don't make time for your wellness, you will be forced to make time for your illness"},
     {"Author": "Unknown", "Text": "Don't let anyone save you for later. Read that again."},
     {"Author": "Unknown", "Text": "If you're not noticed, you're still valid. Like, if no one's gonna read it, you should still write it. If no one's gonna see it, you should still do it. If no one's gonna hear you, you should still say it. You're not measured by how people react to you."},
-    {"Author": "Unknown", "Text": "Just because you don't look like someone who you think is attractive, doesn't mean you aren't attractive. Flowers are pretty but so are christmas lights and they look nothing alike."}
+    {"Author": "Unknown", "Text": "Just because you don't look like someone who you think is attractive, doesn't mean you aren't attractive. Flowers are pretty but so are christmas lights and they look nothing alike."},
+    {"Author": "Unknown", "Text": "Sit in the sun without anything to do, feel the heat of the rays hit your skin, realize that this sunlight has travelled a very long way to reach you"},
+    {"Author": "Unknown", "Text": "Watch your favorite movie. Even if it's ffor the 20th time."},
+    {"Author": "Lori Deschene", "Text": "You can't hate your way into loving yourself"},
+    {"Author": "Unknown", "Text": "You need love the most when you feel you deserve it the least"},
+    
+    {"Author": "Rumi", "Text": "Never give from the depths of your well, but from the overflow."},
+    {"Author": "Frances Ryan", "Text": "Self-care has become a new priority - the revelation that it's perfectly permissable to listen to your body and do what it needs."},
+    {"Author": "Vironika Tugaleva", "Text": "Each wave that rolls onto the shore must release back to the ocean. You are the same. Each wave of action you take must release back to the peace within you. Stress is what happens when you resist this natural process. Everyone needs breaks. Denying this necessity does not remove it. Let yourself go. Realize that, sometimes, the best thing to do is absolutely nothing."},
+    {"Author": "Jack Kornfield", "Text": "If your compassion does not include yourself, it is incomplete."},
+    {"Author": "Howard Thurman", "Text": "Don’t ask yourself what the world needs, ask yourself what makes you come alive. And then go and do that. Because what the world needs is people who have come alive."},
+    {"Author": "Ovid", "Text": "Take rest; a field that has rested gives a bountiful crop."},
+    {"Author": "Audre Lorde", "Text": "Caring for myself is not self-indulgence, it is self-preservation, and that is an act of political warfare."},
+    {"Author": "Rumi", "Text": "Your task is not to seek for love, but merely to seek and find the barriers within yourself that you have built up against it."},
+    {"Author": "Unknown", "Text": "There is far more right with you than wrong with you."},
+    {"Author": "Debasish Mridha", "Text": "Love others to make them feel better and so that you see yourself in the mirrors of their eyes."},
+
+    {"Author": "Ranata Suzuki", "Text": "You've been hurt and you have a right to feel those emotions but emotions are a loaded gun - make sure you're pointing them at the right person."},
+    {"Author": "Unknown", "Text": "The people you compare yourself to compare themselves to other people too"},
+    {"Author": "Steven Furtick", "Text": "The reason why we struggle with insecurity is because we compare our behind the scenes with everyone else's highlight reel."},
+    {"Author": "Lana Del Rey ", "Text": "When someone else's happiness is your happiness, that is love."},
+    {"Author": "Unknown", "Text": "Do you guys realize we can change our lives any time we want? Like you can just go ahead and delete your blog, stop eating meat, shave your head, start running, tell that person you hate why you hate them so much, confess your love to someone and kiss them unexpectedly. Like why don't we do that?"},
+    {"Author": "rorygilmorestudy", "Text": "Once you stop fantasizing about that ideal version of yourself and start working towards becoming that person by setting your alarm clock earlier, and actually going to the gym, and actually volunteering at places, and actually eating healthier, and not procrastinating, and working just a little bit harder, you'll realize it was so easy all along."},
+    {"Author": "Mark Groves", "Text": "Whether it's love, work, or chasing dreams, we'll always find a reason not to. Find a reason to."},
+    {"Author": "Denice Frohman", "Text": "Your wound is probably not your fault. But your healing is your responsibility."},
+    {"Author": "Unknown", "Text": "I don't entertain situations or folks that are draining or triggering. If it's cost my peace, I cannot afford it."},
+    {"Author": "Jessica Hagy", "Text": "If it is unappetizing: Do not eat, date, or sign up for it. If the mere thought of it is depressing: Do not major in it, sit through it, or devote your life to it. If it is not important to you: Do not do it only because it is important to someone else. You will thank yourself."},
+    
+    {"Author": "Diddy", "Text": "The fact that you aren't where you want to be, should be enough motivation to hustle harder."},
+    {"Author": "Louise Hay", "Text": "You've been criticizing yourself for years and it hasn't worked. Try accepting yourself and see what happens."},
+    {"Author": "Unknown", "Text": "Admit it. You're dope. Stop pretending you're less than you are to protect someone else's ego. Be unabashedly aware of your fresh."},
+    {"Author": "Jazz Zo Marcellus", "Text": "Go where your energy is reciprocated, celebrated, and appreciated. Not taken for granted or played with."},
+    {"Author": "Idil Ahmed", "Text": "What if it does work out exactly how you imagined it or greater. Entertain that thought."},
+    {"Author": "Idil Ahmed", "Text": "It's already meant for you. Start accepting and believing that you're destined for greatness."},
+    {"Author": "Idil Ahmed", "Text": "Bring your mind back to how blessed you already are. There's always something to be grateful for."},
+    {"Author": "Idil Ahmed", "Text": "Soon you'll see yourself living what you were praying for. Keep believing. Keep going."},
+    {"Author": "Idil Ahmed", "Text": "Forgive yourself for not knowing better. You're wiser now and you've learned so much to make better choices. It's a new day for you. End the guilt trip and regret. Move upwards and forward into your new desired state. Your mental shift will create a new world for you."},
+    {"Author": "Idil Ahmed", "Text": "The moment you decide you want better for yourself is the minute the entire universe begins to shift in your favor. Your declaration, command, intentions, visions, and prayers begin the creation of a new reality. All you have to do today is decide and never look back."},
+
+    {"Author": "", "Text": ""},
+]
+
+
+
+
+
+
+
 ]
 
 
