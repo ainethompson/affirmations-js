@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import Message, connect_to_db
 import crud
-# from seed_database import messages_in_db
 import os
 import json
 from jinja2 import StrictUndefined
@@ -22,30 +21,61 @@ def homepage():
     return render_template('base.html')
 
 
-# @app.route('/subscribe', methods=['GET'])
+@app.route('/subscribe', methods=['POST'])
+def process_subscribe():
+    """ Submits form to save user info to db """
+
+    fname = request.form.get('fname').title()
+    phone_num = request.form.get('phone_num')
+
+    user = crud.create_user(fname, phone_num)
+
+    session['fname'] = fname
+
+    if user:
+        flash("Oops! It looks like you're already subscribed with us!")
+        # return redirect('/homepage')
+    else:
+        flash("Success!")
+    # return redirect('/success')
+   
+
+
+
+
+# route to get form info front end to 
+# @app.route('/handle-subscribe')
+
+#     crud.create_user
+
+
+# @app.route('/subscribe', methods=['POST'])
 # def show_subscribe():
 #     """ Show subscription page. """
 
 #     return render_template('.html')
 
 
-@app.route('/api/subscribe', methods=['POST'])
-def subscribe():
-    # get form submission to work
-    # use ajax lab to generate post request
-    print('Subscribe the user')
-    return jsonify({'cats': 15})
+# @app.route('/api/subscribe', methods=['POST'])
+# def subscribe():
+#     # get form submission to work
+#     # use ajax lab to generate post request
+#     print('Subscribe the user')
+#     return jsonify({'cats': 15})
 
+@app.route('/about')
+def unsent_messages():
+    """ View unsent Messages """
+    return render_template('subscribe.html')
 
 """ Test Route """
-@app.route('/api/messages', methods=['GET'])
+@app.route('/api/about', methods=['GET'])
 def get_messages():
-    # messages = crud.get_messages
     message_list = []
     for message in crud.get_unsent_messages():
         message_list.append({'author': message.author, 'text': message.text})
-    # Message.query.all()
-    return jsonify({'messages': message_list})
+
+    return jsonify({'unsent messages': message_list})
 
 # @app.route('/subscribe', methods=['POST'])
 # def process_subscribe():
