@@ -10,33 +10,46 @@ function Subscribe() {
          setFormData(previousData => ({...previousData, [name]: value}));
      }
 // to do: use ajax to send user info to db on backend
-     const handleSubmit = (event) => {
-        //  event.preventDefault();
-         console.log(formData);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+        const something = {
+            fname: $('#firstName').val(),
+            phone_num: $('#phoneNum').val()
+        };
+        $.post('/subscribe', something, (response) => {
+            const subStatus = $('#subStatus');
+            subStatus.html(response);
+        });
+    
+        console.log(formData);
         //  check if formData is empty -- set some error
 
          console.log(`A form was submitted: ${formData}`);
         //  ajax to send info to db
         // if info sent to db, render success component
-     }
+    }
 
-     return (
-         <form action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
-             <div>
+    return (
+        <div>
+            <form action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
+                <div>
                 <label>
                     Name:
                     <input type="text" id='firstName' name='firstName' value={formData.firstName} placeholder="First Name" onChange={handleChange} />
                 </label>
-             </div>
-             <div>
+                </div>
+                <div>
                 <label>
                     Phone Number:
                     <input type="tel" name='phoneNum' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
                 </label>
-             </div>
-             <input type="submit" value="Submit" />
-         </form>
-     );
+                </div>
+                <input type="submit" value="Submit" />
+            </form>
+            <div id="subStatus" ></div>
+        </div>
+    );
 }
 
 
