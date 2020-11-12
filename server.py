@@ -30,9 +30,11 @@ def process_subscribe():
 
     # user_in_db = crud.get_user_by_phone(phone_num)
 
+# if number already in db
+
     # if user_in_db:
     #     result_code = 'ERROR'
-    #     result_text = "Oops! It looks like you're already subscribed with us!"
+    #     result_text = "Oops! It looks like this number is already subscribed with us!"
     # else:
     crud.create_user(fname, phone_num)
     result_code = "USER CREATED"
@@ -51,16 +53,6 @@ def process_subscribe():
     # # return redirect('/success')
    
 
-
-
-
-# route to get form info front end to 
-# @app.route('/handle-subscribe')
-
-#     crud.create_user
-
-
-
 # @app.route('/api/subscribe', methods=['POST'])
 # def subscribe():
 #     # get form submission to work
@@ -71,20 +63,7 @@ def process_subscribe():
 
 """ Test Route """
 
-@app.route('/api/about', methods=['GET'])
-def get_messages():
-
-    message_list = []
-    for message in crud.get_unsent_messages():
-        message_list.append({'author': message.author, 'text': message.text})
-
-    return jsonify({'unsent messages': message_list})
-
-@app.route('/about')
-def unsent_messages():
-    """ View unsent Messages """
-    return render_template('subscribe.html')
-
+# 
 if __name__ == '__main__': 
     connect_to_db(app)
     app.run(debug=True, host='0.0.0.0')

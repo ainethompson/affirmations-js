@@ -14,7 +14,6 @@ if __name__== '__main__':
 
 # TO SEND TO EVERY USER:
 all_phones = crud.get_all_phone_nums()
-
 phone_list = []
 
 for phone_num in all_phones:
@@ -31,13 +30,13 @@ def send_message():
     i = randint(0, len(unsent_messages))
     to_send = unsent_messages[i]
 
-    text = to_send.message_text
-    author = to_send.message_author
+    text = to_send.text
+    author = to_send.author
 
-    quote = f"✨ Note to self.... \n\n{text} \n\n- {author} ✨"
+    quote = f"✨{text} \n\n- {author} ✨"
 
     twilio_number = '+15103300507'
-    phone ='+15109819837'
+    # phone ='+15109819837'
     for num in phone_list:
         phone = num
     
@@ -46,11 +45,12 @@ def send_message():
                             body=quote)
     print(message)
 
-    # user = crud.get_user_by_phone(phone)
+    # to do: format phone from '+10000000000' to '000-000-0000'
+    # user = crud.get_user_by_phone(phone_str)
 
-    # crud.create_user_message(user.user_id, to_send.message_id)
+    # crud.create_user_message(user, to_send)
     
-    # crud.update_to_sent(to_send)
+    crud.update_to_sent(to_send)
 
 
 schedule.every(10).seconds.do(send_message)

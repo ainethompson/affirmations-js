@@ -41,16 +41,16 @@ for message in message_data:
 # user_message = crud.create_user_message(user, db_message)
 
 """ Test Data """
-for n in range(10):
-    name = f'test_user #{n}'
-    phone_num = f'{n}{n}{n}-{n}{n}{n}-{n}{n}{n}{n}'
+# for n in range(10):
+#     name = f'test_user #{n}'
+#     phone_num = f'{n}{n}{n}-{n}{n}{n}-{n}{n}{n}{n}'
 
-    user = crud.create_user(name, phone_num)
+#     user = crud.create_user(name, phone_num)
 
-    for i in range(10):
-        random_message = choice(messages_in_db)
+#     for i in range(10):
+#         random_message = choice(messages_in_db)
 
-        crud.create_user_message(user, random_message)
+#         crud.create_user_message(user, random_message)
 
 
 
