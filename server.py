@@ -25,20 +25,22 @@ def homepage():
 def process_subscribe():
     """ Submits form to save user info to db """
 
-    fname = request.form.get('fname').title()
-    phone_num = request.form.get('phone_num')
+    fname = request.form.get('firstName').title()
+    phone_num = request.form.get('phoneNum')
 
-    is_user = crud.get_user_by_phone(phone_num)
+    # user_in_db = crud.get_user_by_phone(phone_num)
 
-    if is_user:
-        flash("Oops! It looks like you're already subscribed with us!")
-    else:
-        crud.create_user(fname, phone_num)
-        flash("Success!")
+    # if user_in_db:
+    #     result_code = 'ERROR'
+    #     result_text = "Oops! It looks like you're already subscribed with us!"
+    # else:
+    crud.create_user(fname, phone_num)
+    result_code = "USER CREATED"
+    result_text = f"Success! {fname} has been subscribed."
 
-    session['fname'] = fname
+    # session['fname'] = fname
 
-    return jsonify({'})
+    return jsonify({'code': result_code, 'msg': result_text})
 
 
     # if user:

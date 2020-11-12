@@ -14,18 +14,18 @@ function Subscribe() {
         event.preventDefault();
 
         const something = {
-            fname: $('#firstName').val(),
-            phone_num: $('#phoneNum').val()
+            firstName: $('#firstName').val(),
+            phoneNum: $('#phoneNum').val()
         };
         $.post('/subscribe', something, (response) => {
             const subStatus = $('#subStatus');
-            subStatus.html(response);
+            subStatus.html(`<p>${response.msg}</p>`);
         });
     
         console.log(formData);
         //  check if formData is empty -- set some error
 
-         console.log(`A form was submitted: ${formData}`);
+        //  console.log(`A form was submitted: ${firstName}, ${phoneNum}`);
         //  ajax to send info to db
         // if info sent to db, render success component
     }
@@ -35,14 +35,14 @@ function Subscribe() {
             <form action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
                 <div>
                 <label>
-                    Name:
-                    <input type="text" id='firstName' name='firstName' value={formData.firstName} placeholder="First Name" onChange={handleChange} />
+                    Name: 
+                    <input type="text" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
                 </label>
                 </div>
                 <div>
                 <label>
-                    Phone Number:
-                    <input type="tel" name='phoneNum' pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
+                    Phone Number: 
+                    <input type="tel" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
                 </label>
                 </div>
                 <input type="submit" value="Submit" />
@@ -58,9 +58,6 @@ function Subscribe() {
 // })
 // to do: make conditional whether this will render
 
-function ToSubscribe() {
-
-}
 
 ReactDOM.render(
     <Subscribe />,
