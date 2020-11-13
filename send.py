@@ -55,9 +55,10 @@ def send_message():
         for i in range(len(phone)):
             chars.append(phone[i])
         print (chars)
-        chars.pop(0)
+        chars = chars[2:]
         print (chars)
 
+        # db_phone = f'{'
 
 
 
