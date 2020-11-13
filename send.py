@@ -54,12 +54,25 @@ def send_message():
         chars = []
         for i in range(len(phone)):
             chars.append(phone[i])
-        print (chars)
         chars = chars[2:]
-        print (chars)
+        sections = f'{chars[0:3]}-{chars[3:6]}-{chars[6:10]}'
+        to_remove = "[],' "
+        new_str = sections
+        for item in to_remove:
+            new_str = new_str.replace(item,'')
+        print(new_str)
 
-        # db_phone = f'{'
+        # db_phone_1 = sections.replace('[', '')
+        # db_phone_2 = db_phone_1.replace(']', '')
+        # db_phone_3 = db_phone_2.replace("'", "")
+        # db_phone_4 = db_phone_3.replace()
+        # phone_string = ''.join(list(db_phone_3))
+        # print(phone_string)
 
+
+        db_phone = sections.strip("[]")
+        print (sections)
+        ''.join(db_phone_2)
 
 
 # phone_list = ['+15109819837', '+15109147993', '+15108470677']
