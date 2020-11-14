@@ -23,7 +23,7 @@ def get_user_by_id(user_id):
 def get_user_by_phone(phone_num):
     """ Return a user by phone_num"""
 
-    user = db.session.query(User).filter(phone_num == User.phone_num)
+    user = db.session.query(User).filter(phone_num == User.phone_num).one()
     return user
     
     # SELECT * FROM users WHERE phone_num == phone_num
