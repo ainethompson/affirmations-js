@@ -1,4 +1,5 @@
 from twilio.rest import Client
+from flask import session
 import json
 import model
 import crud
@@ -27,50 +28,41 @@ if __name__== '__main__':
 
 def send_message():
 
+    client = Client(twilio_sid, auth_token)
+
+    unsent_messages = crud.get_unsent_messages()
+    i = randint(0, len(unsent_messages))
+    to_send = unsent_messages[i]
+
     for num in phone_list:
         phone = num
 
-        client = Client(twilio_sid, auth_token)
+        chars = []
+        for i in range(len(phone)):
+            chars.append(phone[i])
+        chars = chars[2:]
+        sections = f'{chars[0:3]}-{chars[3:6]}-{chars[6:10]}'
+        to_remove = "[],' "
+        new_str = sections
+        for item in to_remove:
+            new_str = new_str.replace(item,'')
+        print(new_str)
 
-        unsent_messages = crud.get_unsent_messages()
-        i = randint(0, len(unsent_messages))
-        to_send = unsent_messages[i]
+        user = crud.get_user_by_phone(new_str)
+
 
         text = to_send.text
         author = to_send.author
-        quote = f"✨{text} \n\n- {author} ✨"
+        quote = f"✨ Good morning {user.name} ✨ \n\n{text} \n\n- {author}"
         
         message = client.messages.create(to=phone,
                                 from_=twilio_number,
                                 body=quote)
         print(message)
         
-    crud.update_to_sent(to_send)
-
-    for phone_num in all_phones:
-    
-        user = crud.get_user_by_phone(phone_num)
         crud.create_user_message(user, to_send)
-        
 
-
-
-
-#     for phone in phone_list:
-#         chars = []
-#         for i in range(len(phone)):
-#             chars.append(phone[i])
-#         chars = chars[2:]
-#         sections = f'{chars[0:3]}-{chars[3:6]}-{chars[6:10]}'
-#         to_remove = "[],' "
-#         phone_str = sections
-#         for item in to_remove:
-#             phone_str = phone_str.replace(item, '')
-
-
-#         user = crud.get_user_by_phone(phone_str)
-            # crud.create_user_message(user, to_send)
-        
+    crud.update_to_sent(to_send)
 
 
 schedule.every(10).seconds.do(send_message)

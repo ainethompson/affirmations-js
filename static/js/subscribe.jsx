@@ -13,11 +13,11 @@ function Subscribe() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const something = {
+        const userInfo = {
             firstName: $('#firstName').val(),
             phoneNum: $('#phoneNum').val()
         };
-        $.post('/subscribe', something, (response) => {
+        $.post('/subscribe', userInfo, (response) => {
             const subStatus = $('#subStatus');
             subStatus.html(`<p>${response.msg}</p>`);
         });
@@ -45,7 +45,7 @@ function Subscribe() {
                     <input type="tel" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
                 </label>
                 </div>
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Subscribe" />
             </form>
             <div id="subStatus" ></div>
         </div>

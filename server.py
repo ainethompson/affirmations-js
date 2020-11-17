@@ -28,17 +28,19 @@ def process_subscribe():
     fname = request.form.get('firstName').title()
     phone_num = request.form.get('phoneNum')
 
-    # user_in_db = crud.get_user_by_phone(phone_num)
+    user_in_db = crud.get_user_by_phone(phone_num)
 
-# if number already in db
 
-    # if user_in_db:
-    #     result_code = 'ERROR'
-    #     result_text = "Oops! It looks like this number is already subscribed with us!"
-    # else:
-    crud.create_user(fname, phone_num)
-    result_code = "USER CREATED"
-    result_text = f"Success! {fname} has been subscribed."
+    if user_in_db:
+        result_code = 'ERROR'
+        result_text = "Oops! It looks like this number is already subscribed with us!"
+    elif fname is None or phone_num is None:
+        result_code = 'ERROR'
+        result_text = "Please fill out the given fields"
+    else:
+        crud.create_user(fname, phone_num)
+        result_code = "USER CREATED"
+        result_text = f"Success! {fname} has been subscribed."
 
     # session['fname'] = fname
 
