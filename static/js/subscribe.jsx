@@ -32,20 +32,20 @@ function Subscribe() {
 
     return (
         <div>
-            <form action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
+            <form className='form-group' action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
                 <div>
-                <label>
+                <label for="userName">
                     Name: 
-                    <input type="text" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
+                    <input type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
                 </label>
                 </div>
                 <div>
-                <label>
+                <label for="phoneNum">
                     Phone Number: 
-                    <input type="tel" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
+                    <input type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
                 </label>
                 </div>
-                <input type="submit" value="Subscribe" />
+                <input type="submit" className="btn btn-primary mb-2" value="Subscribe" />
             </form>
             <div id="subStatus" ></div>
         </div>

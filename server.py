@@ -34,7 +34,7 @@ def process_subscribe():
     if user_in_db:
         result_code = 'ERROR'
         result_text = "Oops! It looks like this number is already subscribed with us!"
-    elif fname is None or phone_num is None:
+    elif len(fname) is None or len(phone_num) is None:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
     else:

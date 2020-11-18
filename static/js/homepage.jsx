@@ -2,7 +2,7 @@
 
 function Homepage() {
     return (
-        <div>
+        <div class="container">
             <h1>Welcome!</h1>
             <nav>
                 <ReactRouterDOM.BrowserRouter>
@@ -22,9 +22,9 @@ function Homepage() {
                         <ReactRouterDOM.Route path='/about'>
                             <About />
                         </ReactRouterDOM.Route>
-                        <ReactRouterDOM.Route path='/success'>
+                        {/* <ReactRouterDOM.Route path='/success'>
                             <Success />
-                        </ReactRouterDOM.Route>
+                        </ReactRouterDOM.Route> */}
                     </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>
             </nav>
