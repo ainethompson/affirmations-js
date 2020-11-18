@@ -34,7 +34,7 @@ def process_subscribe():
     if user_in_db:
         result_code = 'ERROR'
         result_text = "Oops! It looks like this number is already subscribed with us!"
-    elif len(fname) is None or len(phone_num) is None:
+    elif len(fname) == 0 or len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
     else:
@@ -54,6 +54,9 @@ def process_subscribe():
     #     flash("Success!")
     # # return redirect('/success')
    
+
+# Api route to serve random affirmation
+
 
 # @app.route('/api/subscribe', methods=['POST'])
 # def subscribe():

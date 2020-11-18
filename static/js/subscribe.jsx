@@ -34,13 +34,13 @@ function Subscribe() {
         <div>
             <form className='form-group' action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
                 <div>
-                <label for="userName">
+                <label>
                     Name: 
                     <input type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
                 </label>
                 </div>
                 <div>
-                <label for="phoneNum">
+                <label>
                     Phone Number: 
                     <input type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
                 </label>
