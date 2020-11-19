@@ -41,6 +41,7 @@ def process_subscribe():
         crud.create_user(fname, phone_num)
         result_code = "USER CREATED"
         result_text = f"Success! {fname} has been subscribed."
+        # return redirect success page
 
     # session['fname'] = fname
 
@@ -56,8 +57,11 @@ def process_subscribe():
    
 
 # Api route to serve random affirmation
-
-
+@app.route('/api/message-generator', methods=['POST'])
+def random_message():
+    random_message = crud.get_random_message
+    # call crud function to get random message
+    return random_message
 # @app.route('/api/subscribe', methods=['POST'])
 # def subscribe():
 #     # get form submission to work
@@ -65,8 +69,6 @@ def process_subscribe():
 #     print('Subscribe the user')
 #     return jsonify({'cats': 15})
 
-
-""" Test Route """
 
 # 
 if __name__ == '__main__': 

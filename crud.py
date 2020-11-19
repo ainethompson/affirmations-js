@@ -18,7 +18,7 @@ def create_user(name, phone_num):
 def get_user_by_id(user_id):
     """Return a user by primary key."""
 
-    return User.query.get(user_id)
+    return User.query.get(user_id).one()
 
 def get_user_by_phone(phone_num):
     """ Return a user by phone_num"""
@@ -49,11 +49,9 @@ def create_message(author, text):
     return message
 
 def get_message_by_id(message_id):
-    """ Return message by id. """
-    return Message.query.get(message_id)
+    return Message.query.get(message_id).one()
 
 def get_unsent_messages():
-    """ Return list of message_ids of messages that have not yet been sent out """
     # SELECT message_id FROM messages WHERE sent = False
     return Message.query.filter(Message.sent == False).all()
 
@@ -61,6 +59,10 @@ def update_to_sent(message):
     message.sent = True
     db.session.commit()
     # UPDATE messages SET sent = TRUE
+
+def get_random_message():
+    i = randint(1, 60)
+    return get_message_by_id(i)
 
 
 """ USERMESSAGE FUNCTIONS """
@@ -74,15 +76,15 @@ def create_user_message(user, message):
     return user_message
 
 def get_user_messages(user_id):
-    """ return messages that this user has already received"""
-    pass 
-    # user_message_list = []
+    """ return list of messages that this user has received"""
+    return UserMessage.query.filter(user_id == UserMessage.user_id).all()
 
-    # for message in sent messages:
-#       
-    #SELECT message_id FROM messages WHERE message_id IN (SELECT message_id FROM user_messages WHERE user_id = 1);
-
-    # return message
+def get_message_users(message_id):
+    """ return list of users that this message has been sent to """
+    if UserMessage.message_id:
+        return UserMessage.query.filter(message_id == UserMessage.message_id).all()
+    else:
+        return "This message has not been sent to anybody"
 
 if __name__== '__main__':
     from server import app
