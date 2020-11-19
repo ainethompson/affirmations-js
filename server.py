@@ -39,8 +39,9 @@ def process_subscribe():
         result_text = "Please fill out the given fields"
     else:
         crud.create_user(fname, phone_num)
-        result_code = "USER CREATED"
+        result_code = "SUCCESS"
         result_text = f"Success! {fname} has been subscribed."
+        # return Redirect('/success')
         # return redirect success page
 
     # session['fname'] = fname
@@ -60,8 +61,14 @@ def process_subscribe():
 @app.route('/api/message-generator', methods=['POST'])
 def random_message():
     random_message = crud.get_random_message
-    # call crud function to get random message
     return random_message
+
+
+@app.route('/success')
+def show_success():
+    # call success component with React
+
+
 # @app.route('/api/subscribe', methods=['POST'])
 # def subscribe():
 #     # get form submission to work

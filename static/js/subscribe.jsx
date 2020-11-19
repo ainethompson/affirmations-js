@@ -1,6 +1,6 @@
 
 
-function Subscribe() {
+function Subscribe(props) {
 
      const [formData, setFormData] = React.useState({firstName: '', phoneNum: ''});
 
@@ -18,8 +18,17 @@ function Subscribe() {
             phoneNum: $('#phoneNum').val()
         };
         $.post('/subscribe', userInfo, (response) => {
-            const subStatus = $('#subStatus');
-            subStatus.html(`<p>${response.msg}</p>`);
+            if (code === "SUCCESS") {
+                return props.success
+            }
+            else {
+            // if successful, render success component
+            // else, stay on page and display response message
+
+
+                const subStatus = $('#subStatus');
+                subStatus.html(`<p>${response.msg}</p>`);
+            }
         });
     
         console.log(formData);
@@ -32,7 +41,7 @@ function Subscribe() {
 
     return (
         <div>
-            <form className='form-group' action='/api/subscribe' method='POST' onSubmit={handleSubmit}>
+            <form className='form-group' action='/subscribe' method='POST' onSubmit={handleSubmit}>
                 <div>
                 <label>
                     Name: 
@@ -53,75 +62,15 @@ function Subscribe() {
 }
 
 
-// $.get('/subscribe', (res) => {
-//     $('#firstName').text(response)
-// })
-// to do: make conditional whether this will render
-
-
 ReactDOM.render(
-    <Subscribe />,
+    <Subscribe 
+        success="ReactDOM.render(
+            <Success />,
+            document.querySelector('#root')"
+        />,
     document.querySelector('#root')
 );
 
 
 
 
-
-
-
-
-
-//     const { register,handleSubmit, watch, errors } = useForm();
-
-//     return (
-//         <form action="/subscribe" class="form-subscribe" method="POST">
-
-//             <h2 class="form-subscribe-heading">Subscribe to receive daily affirmations</h2>
-
-//             <div class="form-group">
-//                 <label for="fname-field">Name:</label>
-//                 <input type="fname"
-//                         name="fname"
-//                         placeholder="First Name"
-//                         required>
-//             </div>
-
-//             <div class="form-group">
-//                 <label for="phone-num-field">Phone Number:</label>
-//                 <input type="tel"
-//                         name="phone_num"
-//                         id="phone_num"
-//                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-//                         placeholder="000-000-0000"
-//                         required>
-//             </div>
-
-//             <button class="subscribe" type="submit">Subscribe</button>
-//             </form>
-
-//     );
-// }
-
-
-
-
-
-
-
-
-
-
-// // const init = function() {
-// //     document.getElementById('submit').addEventListener('click', send);//send calls send function below
-// // }
-
-// // const send = function(evt) {
-// //     evt.preventDefault();
-// //     document.getElementById('subscribe').onsubmit();
-// // }
-
-
-
-
-// // const submitForm = document.getElementById()

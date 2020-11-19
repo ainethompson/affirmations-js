@@ -4,7 +4,7 @@
 function Success() {
 
     return (
-        <h1>Success! You are now subscribed</h1>
+        <h1>Success! {firstName} is now subscribed</h1>
     )
 }
 
