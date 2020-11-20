@@ -49,7 +49,7 @@ def create_message(author, text):
     return message
 
 def get_message_by_id(message_id):
-    return Message.query.get(message_id).one()
+    return Message.query.get(message_id)
 
 def get_unsent_messages():
     # SELECT message_id FROM messages WHERE sent = False

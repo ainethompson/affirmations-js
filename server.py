@@ -21,7 +21,7 @@ def homepage():
     return render_template('base.html')
 
 
-@app.route('/subscribe', methods=['POST'])
+@app.route('/api/subscribe', methods=['POST'])
 def process_subscribe():
     """ Submits form to save user info to db """
 
@@ -41,8 +41,8 @@ def process_subscribe():
         crud.create_user(fname, phone_num)
         result_code = "SUCCESS"
         result_text = f"Success! {fname} has been subscribed."
-        # return Redirect('/success')
-        # return redirect success page
+        # return redirect('/success')
+        
 
     # session['fname'] = fname
 
@@ -60,12 +60,19 @@ def process_subscribe():
 # Api route to serve random affirmation
 @app.route('/api/message-generator', methods=['POST'])
 def random_message():
-    random_message = crud.get_random_message
-    return random_message
+    random_message = crud.get_random_message()
+    return jsonify({"text": random_message.text, "author": random_message.author})
+
+# @app.route('/get-name')
+# def get_name():
+#     fname = request.form.get('firstName').title()
+#     return fname
 
 
-@app.route('/success')
-def show_success():
+
+# @app.route('/success')
+# def show_success():
+#     pass
     # call success component with React
 
 

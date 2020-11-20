@@ -15,6 +15,9 @@ function Homepage() {
                     <p>
                         <ReactRouterDOM.Link to='/success'></ReactRouterDOM.Link>
                     </p>
+                    <p>
+                        <ReactRouterDOM.Link to='/message-generator'>Message generator</ReactRouterDOM.Link>
+                    </p>
                     <ReactRouterDOM.Switch>
                         <ReactRouterDOM.Route path='/subscribe'>
                             <Subscribe />
@@ -25,9 +28,13 @@ function Homepage() {
                         <ReactRouterDOM.Route path='/success'>
                             <Success />
                         </ReactRouterDOM.Route>
+                        <ReactRouterDOM.Route path='/message-generator'>
+                            <RandomMessage />
+                        </ReactRouterDOM.Route>
                     </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>
             </nav>
+
         </div>
     );
 }

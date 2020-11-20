@@ -1,10 +1,10 @@
 
 
-function Subscribe(props) {
+function Subscribe() {
 
-     const [formData, setFormData] = React.useState({firstName: '', phoneNum: ''});
+    const [formData, setFormData] = React.useState({firstName: '', phoneNum: ''});
 
-     const handleChange = (event) => {
+    const handleChange = (event) => {
         const { target } = event;
         const { name, value } = target;
          setFormData(previousData => ({...previousData, [name]: value}));
@@ -17,15 +17,15 @@ function Subscribe(props) {
             firstName: $('#firstName').val(),
             phoneNum: $('#phoneNum').val()
         };
-        $.post('/subscribe', userInfo, (response) => {
-            if (code === "SUCCESS") {
-                return props.success
+        $.post('/api/subscribe', userInfo, (response) => {
+            if (response.code === "SUCCESS") {
+                ReactDOM.render(
+                    <Success name={userInfo.firstName}/>,
+                    document.querySelector('#root'))
             }
             else {
             // if successful, render success component
             // else, stay on page and display response message
-
-
                 const subStatus = $('#subStatus');
                 subStatus.html(`<p>${response.msg}</p>`);
             }
@@ -34,8 +34,6 @@ function Subscribe(props) {
         console.log(formData);
         //  check if formData is empty -- set some error
 
-        //  console.log(`A form was submitted: ${firstName}, ${phoneNum}`);
-        //  ajax to send info to db
         // if info sent to db, render success component
     }
 
@@ -63,11 +61,7 @@ function Subscribe(props) {
 
 
 ReactDOM.render(
-    <Subscribe 
-        success="ReactDOM.render(
-            <Success />,
-            document.querySelector('#root')"
-        />,
+    <Subscribe />,
     document.querySelector('#root')
 );
 

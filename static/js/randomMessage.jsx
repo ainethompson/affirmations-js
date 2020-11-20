@@ -4,22 +4,21 @@
 
 function RandomMessage() {
 
-    $.post('/message-generator', (res) => {
-
-    })
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
-
-    }
-
-    // ajax to get result from flask
+        $.post('/api/message-generator', (res) => {
+            const randMsg = $('#randMsg');
+            randMsg.html(`<p>${res.text}</p>`);
+            console.log(res.text);
+        }
+    )}
     // on click, ajax get result from flask route
 
     return (
         <div>
-            <button className="btn" id="rand-msg" onClick={handleSubmit}>Random Message Generator</button>
+            <button className="btn" id="randMsg" onClick={handleSubmit} method='POST'>Button</button>
+            <span id="randMsg"></span>
         </div>
     )
 }
