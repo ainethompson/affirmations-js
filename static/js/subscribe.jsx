@@ -10,7 +10,6 @@ function Subscribe() {
         const { name, value } = target;
          setFormData(previousData => ({...previousData, [name]: value}));
      }
-// to do: use ajax to send user info to db on backend
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -26,17 +25,12 @@ function Subscribe() {
                     document.querySelector('#root'))
             }
             else {
-            // if successful, render success component
-            // else, stay on page and display response message
                 const subStatus = $('#subStatus');
                 subStatus.html(`<p>${response.msg}</p>`);
             }
         });
     
         console.log(formData);
-        //  check if formData is empty -- set some error
-
-        // if info sent to db, render success component
     }
 
     return (

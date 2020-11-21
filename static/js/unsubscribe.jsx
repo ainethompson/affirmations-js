@@ -9,16 +9,17 @@ function Unsubscribe() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // const userPhone = {
-        //     phoneNum: $('#phoneNum').val()
-        // };
-            const phoneNum = $('#unsubPhoneNum').val()
+        const userInfo = {
+            phoneNum: $('#phoneNum').val()
+        };
+            // const phoneNum = $('#phoneNum').val()
 
-        $.post('/api/unsubscribe', phoneNum, (response) => {
+        $.post('/api/unsubscribe', userInfo, (response) => {
             if (response.code === "SUCCESS") {
                 ReactDOM.render(
                     <SuccessUnsub name={response.name}/>,
-                    document.querySelector('#root'))
+                    document.querySelector('#root'));
+                console.log(response.name);
             }
             else {
                 const unsubStatus = $('#unsubStatus');
@@ -35,7 +36,7 @@ function Unsubscribe() {
                 <div>
                 <label>
                     Please enter the phone number you wish to unsubscribe: 
-                    <input type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" onChange={handleChange} />
+                    <input type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum.phoneNum} onChange={handleChange} />
                 </label>
                 </div>
                 <input type="submit" className="btn btn-primary mb-2" value="Unsubscribe" />

@@ -63,11 +63,11 @@ def process_unsub():
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
+        return jsonify({'code': result_code, 'msg': result_text})
     else:
         result_code = 'ERROR'
         result_text = "Oops! It doesn't look like this number is subscribed with us."
-
-    return jsonify({'code': result_code, 'msg': result_text})
+        return jsonify({'code': result_code, 'msg': result_text})
 
 
 # Api route to serve random affirmation
