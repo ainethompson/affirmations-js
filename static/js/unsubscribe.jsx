@@ -12,7 +12,7 @@ function Unsubscribe() {
         // const userPhone = {
         //     phoneNum: $('#phoneNum').val()
         // };
-            const phoneNum = $('#phoneNum').val()
+            const phoneNum = $('#unsubPhoneNum').val()
 
         $.post('/api/unsubscribe', phoneNum, (response) => {
             if (response.code === "SUCCESS") {

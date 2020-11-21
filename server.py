@@ -38,8 +38,8 @@ def process_subscribe():
         result_text = "Please fill out the given fields"
     else:
         crud.create_user(fname, phone_num)
-        # result_code = "SUCCESS"
-        # result_text = f"Success! {fname} has been subscribed."
+        result_code = "SUCCESS"
+        result_text = f"Success! {fname} has been subscribed."
     
     return jsonify({'code': result_code, 'msg': result_text})
    

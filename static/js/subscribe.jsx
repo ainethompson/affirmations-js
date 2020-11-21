@@ -15,6 +15,7 @@ function Subscribe() {
         event.preventDefault();
 
         const userInfo = {
+            // to do: title case first name
             firstName: $('#firstName').val(),
             phoneNum: $('#phoneNum').val()
         };
