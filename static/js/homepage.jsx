@@ -1,10 +1,10 @@
 
 
 function Homepage() {
-    ReactDOM.render(
-        <RandomMessage />,
-        document.querySelector('#root')
-    );
+    // ReactDOM.render(
+    //     <RandomMessage />,
+    //     document.querySelector('#root')
+    // );
     return (
         <div className="container">
             <h1>Welcome!</h1>
@@ -19,7 +19,12 @@ function Homepage() {
                     <p>
                         <ReactRouterDOM.Link to='/success'></ReactRouterDOM.Link>
                     </p>
-                    
+                    <p>
+                        <ReactRouterDOM.Link to='/unsubscribe'></ReactRouterDOM.Link>
+                    </p>
+                    <p>
+                        <ReactRouterDOM.Link to='/message-generator'></ReactRouterDOM.Link>
+                    </p>
                     <ReactRouterDOM.Switch>
                         <ReactRouterDOM.Route path='/subscribe'>
                             <Subscribe />
@@ -28,10 +33,13 @@ function Homepage() {
                             <About />
                         </ReactRouterDOM.Route>
                         <ReactRouterDOM.Route path='/success'>
-                            <Success />
+                            <SuccessSub />
                         </ReactRouterDOM.Route>
                         <ReactRouterDOM.Route path='/message-generator'>
                             <RandomMessage />
+                        </ReactRouterDOM.Route>
+                        <ReactRouterDOM.Route path='/unsubscribe'>
+                            <Unsubscribe />
                         </ReactRouterDOM.Route>
                     </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>

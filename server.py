@@ -52,10 +52,15 @@ def process_unsub():
 
     user_to_remove = crud.get_user_by_phone(phone_num)
 
+    # name = user_to_remove.name
+
     if user_to_remove:
         crud.remove_user(phone_num)
-        # result_code = 'SUCCESS'
-        # result_text = f"Success. {user_to_remove.fname} has been unsubscribed."
+        result_code = 'SUCCESS'
+        name = user_to_remove.name
+        # result_text = f"Success. {user_to_remove.name} has been unsubscribed."
+        return jsonify({'code': result_code, 'name': name})
+        
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
@@ -72,7 +77,7 @@ def random_message():
     random_message = crud.get_random_message()
     return jsonify({"text": random_message.text, "author": random_message.author})
 
-    
+
 if __name__ == '__main__': 
     connect_to_db(app)
     app.run(debug=True, host='0.0.0.0')

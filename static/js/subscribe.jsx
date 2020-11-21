@@ -1,4 +1,4 @@
-const { func } = require("prop-types");
+// const { func } = require("prop-types");
 
 
 function Subscribe() {
@@ -21,7 +21,7 @@ function Subscribe() {
         $.post('/api/subscribe', userInfo, (response) => {
             if (response.code === "SUCCESS") {
                 ReactDOM.render(
-                    <Success name={userInfo.firstName}/>,
+                    <SuccessSub name={userInfo.firstName}/>,
                     document.querySelector('#root'))
             }
             else {
@@ -82,29 +82,24 @@ function Unsubscribe() {
         const userPhone = {
             phoneNum: $('#phoneNum').val()
         };
-        $.post('/api/subscribe', userPhone, (response) => {
+        $.post('/api/unsubscribe', userPhone, (response) => {
             if (response.code === "SUCCESS") {
                 ReactDOM.render(
-                    <Success name={userInfo.firstName}/>,
+                    <SuccessUnsub name={response.name}/>,
                     document.querySelector('#root'))
             }
             else {
-            // if successful, render success component
-            // else, stay on page and display response message
-                const subStatus = $('#unsubStatus');
+                const unsubStatus = $('#unsubStatus');
                 unsubStatus.html(`<p>${response.msg}</p>`);
             }
         });
     
-        console.log(formData);
-        //  check if formData is empty -- set some error
-
-        // if info sent to db, render success component
+        console.log(phoneNum);
     }
 
     return (
         <div>
-            <form className='form-group' action='/subscribe' method='POST' onSubmit={handleSubmit}>
+            <form className='form-group' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
                 <div>
                 <label>
                     Please enter the phone number you wish to unsubscribe: 
@@ -120,8 +115,8 @@ function Unsubscribe() {
 
 
 ReactDOM.render(
-    <Subscribe />,
+    <Unsubscribe />,
     document.querySelector('#root')
 );
-}
+
 
