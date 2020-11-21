@@ -20,8 +20,8 @@ function RandomMessage() {
             <button action='/message-generator' className="btn" id="randMes" onClick={handleSubmit} method='POST'>Button</button>
             <span id="randMsg"></span>
         </div>
-    )
-}-
+    );
+}
 
 ReactDOM.render(
     <RandomMessage />,

@@ -1,6 +1,6 @@
 
 
-function Success(props) {
+function SuccessSub(props) {
     
     return (
         <div>
@@ -12,9 +12,20 @@ function Success(props) {
 // to do: add link back to homepage
 
 ReactDOM.render(
-    <Success />,
+    <SuccessSub />,
     document.querySelector('#root')
 );
 
+function SuccessUnsub(props) {
 
+    return (
+        <div>
+            <p>Success. {props.name} has been unsubscribed.</p>
+        </div>
+    );
+}
 
+ReactDOM.render(
+    <SuccessUnsub />,
+    document.querySelector('#root')
+);

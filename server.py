@@ -38,17 +38,11 @@ def process_subscribe():
         result_text = "Please fill out the given fields"
     else:
         crud.create_user(fname, phone_num)
-        result_code = "SUCCESS"
-        result_text = f"Success! {fname} has been subscribed."
+        # result_code = "SUCCESS"
+        # result_text = f"Success! {fname} has been subscribed."
     
     return jsonify({'code': result_code, 'msg': result_text})
    
-
-# Api route to serve random affirmation
-@app.route('/api/message-generator', methods=['POST'])
-def random_message():
-    random_message = crud.get_random_message()
-    return jsonify({"text": random_message.text, "author": random_message.author})
 
 
 @app.route('/api/unsubscribe', methods=['POST'])
@@ -60,8 +54,8 @@ def process_unsub():
 
     if user_to_remove:
         crud.remove_user(phone_num)
-        result_code = 'SUCCESS'
-        result_text = f"Success. {user_to_remove.fname} has been unsubscribed."
+        # result_code = 'SUCCESS'
+        # result_text = f"Success. {user_to_remove.fname} has been unsubscribed."
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
@@ -72,6 +66,13 @@ def process_unsub():
     return jsonify({'code': result_code, 'msg': result_text})
 
 
+# Api route to serve random affirmation
+@app.route('/api/message-generator', methods=['POST'])
+def random_message():
+    random_message = crud.get_random_message()
+    return jsonify({"text": random_message.text, "author": random_message.author})
+
+    
 if __name__ == '__main__': 
     connect_to_db(app)
     app.run(debug=True, host='0.0.0.0')
