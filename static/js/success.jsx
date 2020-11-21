@@ -1,17 +1,15 @@
 
-// to do: convert flask session variable to react variable to display name
-// use ajax to get name
+
 function Success(props) {
-    // $.get('/get-name', (res) => {
-    //     $('#firstName').html(res);
-    // });
-    console.log(props)
+    
     return (
         <div>
-            <h1>Success! {props.name} is now subscribed</h1>
+            <h1>Success! {props.name} is now subscribed.</h1>
         </div>
-    )
+    );
 }
+
+// to do: add link back to homepage
 
 ReactDOM.render(
     <Success />,
@@ -20,4 +18,3 @@ ReactDOM.render(
 
 
 
-// learn how to implement sessions with react

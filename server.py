@@ -30,7 +30,6 @@ def process_subscribe():
 
     user_in_db = crud.get_user_by_phone(phone_num)
 
-
     if user_in_db:
         result_code = 'ERROR'
         result_text = "Oops! It looks like this number is already subscribed with us!"
@@ -41,20 +40,8 @@ def process_subscribe():
         crud.create_user(fname, phone_num)
         result_code = "SUCCESS"
         result_text = f"Success! {fname} has been subscribed."
-        # return redirect('/success')
-        
-
-    # session['fname'] = fname
-
+    
     return jsonify({'code': result_code, 'msg': result_text})
-
-
-    # if user:
-    #     flash("Oops! It looks like you're already subscribed with us!")
-    #     # return redirect('/homepage')
-    # else:
-    #     flash("Success!")
-    # # return redirect('/success')
    
 
 # Api route to serve random affirmation
@@ -63,28 +50,28 @@ def random_message():
     random_message = crud.get_random_message()
     return jsonify({"text": random_message.text, "author": random_message.author})
 
-# @app.route('/get-name')
-# def get_name():
-#     fname = request.form.get('firstName').title()
-#     return fname
+
+@app.route('/api/unsubscribe', methods=['POST'])
+def process_unsub():
+    """ Submits form to delete user info from db """
+    phone_num = request.form.get('phone_num')
+
+    user_to_remove = crud.get_user_by_phone(phone_num)
+
+    if user_to_remove:
+        crud.remove_user(phone_num)
+        result_code = 'SUCCESS'
+        result_text = f"Success. {user_to_remove.fname} has been unsubscribed."
+    elif len(phone_num) == 0:
+        result_code = 'ERROR'
+        result_text = "Please fill out the given fields"
+    else:
+        result_code = 'ERROR'
+        result_text = "Oops! It doesn't look like this number is subscribed with us."
+
+    return jsonify({'code': result_code, 'msg': result_text})
 
 
-
-# @app.route('/success')
-# def show_success():
-#     pass
-    # call success component with React
-
-
-# @app.route('/api/subscribe', methods=['POST'])
-# def subscribe():
-#     # get form submission to work
-#     # use ajax lab to generate post request
-#     print('Subscribe the user')
-#     return jsonify({'cats': 15})
-
-
-# 
 if __name__ == '__main__': 
     connect_to_db(app)
     app.run(debug=True, host='0.0.0.0')

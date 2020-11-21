@@ -32,8 +32,17 @@ def get_user_by_phone(phone_num):
 def get_all_phone_nums():
   
     all_phone_nums = db.session.query(User.phone_num).all()
-    
     return all_phone_nums
+
+def remove_user(phone_num):
+    """ Delete a user from DB by phone num """
+
+    user = get_user_by_phone(phone_num)
+    db.session.delete(user)
+    db.session.commit()
+
+    return user
+    # DELETE FROM users WHERE user.phone_num == phone)
 
 
 """ MESSAGE FUNCTIONS """

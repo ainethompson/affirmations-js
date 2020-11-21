@@ -9,20 +9,19 @@ function RandomMessage() {
 
         $.post('/api/message-generator', (res) => {
             const randMsg = $('#randMsg');
-            randMsg.html(`<p>${res.text}</p>`);
-            console.log(res.text);
+            randMsg.html(`<p>${res.text}</p>
+            <p>- ${res.author}</p>`);
+            console.log(res.text, res.author);
         }
     )}
-    // on click, ajax get result from flask route
 
     return (
         <div>
-            <button className="btn" id="randMsg" onClick={handleSubmit} method='POST'>Button</button>
+            <button action='/message-generator' className="btn" id="randMes" onClick={handleSubmit} method='POST'>Button</button>
             <span id="randMsg"></span>
         </div>
     )
-}
-
+}-
 
 ReactDOM.render(
     <RandomMessage />,
