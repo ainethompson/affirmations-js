@@ -39,7 +39,7 @@ def process_subscribe():
     else:
         crud.create_user(fname, phone_num)
         result_code = "SUCCESS"
-        result_text = f"Success! {fname} has been subscribed."
+        result_text = fname
     
     return jsonify({'code': result_code, 'msg': result_text})
    
@@ -57,17 +57,18 @@ def process_unsub():
     if user_to_remove:
         crud.remove_user(phone_num)
         result_code = 'SUCCESS'
-        name = user_to_remove.name
+        result_text = user_to_remove.name
         # result_text = f"Success. {user_to_remove.name} has been unsubscribed."
-        return jsonify({'code': result_code, 'name': name})
+        # return jsonify({'code': result_code, 'name': name})
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
-        return jsonify({'code': result_code, 'msg': result_text})
+        # return jsonify({'code': result_code, 'msg': result_text})
     else:
         result_code = 'ERROR'
         result_text = "Oops! It doesn't look like this number is subscribed with us."
-        return jsonify({'code': result_code, 'msg': result_text})
+        
+    return jsonify({'code': result_code, 'msg': result_text})
 
 
 # Api route to serve random affirmation

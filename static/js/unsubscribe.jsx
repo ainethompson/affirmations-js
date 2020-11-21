@@ -17,7 +17,7 @@ function Unsubscribe() {
         $.post('/api/unsubscribe', userInfo, (response) => {
             if (response.code === "SUCCESS") {
                 ReactDOM.render(
-                    <SuccessUnsub name={response.name}/>,
+                    <SuccessUnsub name={response.msg}/>,
                     document.querySelector('#root'));
                 console.log(response.name);
             }

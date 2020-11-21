@@ -21,7 +21,7 @@ function Subscribe() {
         $.post('/api/subscribe', userInfo, (response) => {
             if (response.code === "SUCCESS") {
                 ReactDOM.render(
-                    <SuccessSub name={userInfo.firstName}/>,
+                    <SuccessSub name={response.msg}/>,
                     document.querySelector('#root'))
             }
             else {
