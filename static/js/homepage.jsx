@@ -20,10 +20,10 @@ function Homepage() {
                         <ReactRouterDOM.Link to='/success'></ReactRouterDOM.Link>
                     </p>
                     <p>
-                        <ReactRouterDOM.Link to='/unsubscribe'></ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to='/unsubscribe'>Unsubscribe</ReactRouterDOM.Link>
                     </p>
                     <p>
-                        <ReactRouterDOM.Link to='/message-generator'></ReactRouterDOM.Link>
+                        <ReactRouterDOM.Link to='/message-generator'>Message Generator</ReactRouterDOM.Link>
                     </p>
                     <ReactRouterDOM.Switch>
                         <ReactRouterDOM.Route path='/subscribe'>

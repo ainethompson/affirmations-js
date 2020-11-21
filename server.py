@@ -48,7 +48,7 @@ def process_subscribe():
 @app.route('/api/unsubscribe', methods=['POST'])
 def process_unsub():
     """ Submits form to delete user info from db """
-    phone_num = request.form.get('phone_num')
+    phone_num = request.form.get('phoneNum')
 
     user_to_remove = crud.get_user_by_phone(phone_num)
 
@@ -60,7 +60,6 @@ def process_unsub():
         name = user_to_remove.name
         # result_text = f"Success. {user_to_remove.name} has been unsubscribed."
         return jsonify({'code': result_code, 'name': name})
-        
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
