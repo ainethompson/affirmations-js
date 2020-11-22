@@ -13,24 +13,45 @@ function Subscribe() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        // const userInfo = {
+        //     firstName: $('#firstName').val(),
+        //     phoneNum: $('#phoneNum').val()
+
         const userInfo = {
-            // to do: title case first name
-            firstName: $('#firstName').val(),
-            phoneNum: $('#phoneNum').val()
+            firstName: document.querySelector('#firstName'),
+            phoneNum: document.querySelector('#phoneNum')
         };
-        $.post('/api/subscribe', userInfo, (response) => {
-            if (response.code === "SUCCESS") {
-                ReactDOM.render(
-                    <SuccessSub name={response.msg}/>,
-                    document.querySelector('#root'))
-                // to do: trigger send message to confirm subscription
-            }
-            else {
-                const subStatus = $('#subStatus');
-                subStatus.html(`<p>${response.msg}</p>`);
-            }
-        });
-    
+
+
+        // $.post('/api/subscribe', userInfo, (response) => {
+        //     if (response.code === "SUCCESS") {
+        //         ReactDOM.render(
+        //             <SuccessSub name={response.msg}/>,
+        //             document.querySelector('#root'))
+        //         // to do: trigger send message to confirm subscription
+        //     } 
+        //     else {
+        //         const subStatus = $('#subStatus');
+        //         subStatus.html(`<p>${response.msg}</p>`);
+        //     }
+        // });
+
+        fetch('/api/subscribe', {
+            method: 'POST',
+            body: userInfo
+        })
+            .then(response => {
+                if (response.code === "SUCCESS") {
+                    ReactDOM.render(
+                        <SuccessSub name={response.msg}/>,
+                        document.querySelector('#root'))
+                    // to do: trigger send message to confirm subscription
+                } else {
+                    const subStatus = document.querySelector('#subStatus');
+                    subStatus.html(`<p>${response.msg}</p>`);
+                }
+        })
+            .catch(error => console.log('ERROR'))
         console.log(formData);
     }
 
