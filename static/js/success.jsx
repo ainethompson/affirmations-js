@@ -3,7 +3,7 @@
 function SuccessSub(props) {
     return (
         <div>
-            <h1>Success! {props.name} is now subscribed.</h1>
+            <h2>Success! {props.name} is now subscribed.</h2>
         </div>
     );
 }

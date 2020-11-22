@@ -23,6 +23,7 @@ function Subscribe() {
                 ReactDOM.render(
                     <SuccessSub name={response.msg}/>,
                     document.querySelector('#root'))
+                // to do: trigger send message to confirm subscription
             }
             else {
                 const subStatus = $('#subStatus');

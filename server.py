@@ -14,6 +14,8 @@ app.jinja_env.undefined = StrictUndefined
 twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
 auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
 
+verify_service_sid = secrets_dict["VERIFY_SERVICE_SID"]
+
 @app.route('/')
 def homepage():
     """ View Homepage. """
@@ -25,7 +27,7 @@ def homepage():
 def process_subscribe():
     """ Submits form to save user info to db """
 
-    fname = request.form.get('firstName').title()
+    name = request.form.get('firstName').title()
     phone_num = request.form.get('phoneNum')
 
     user_in_db = crud.get_user_by_phone(phone_num)
@@ -33,13 +35,13 @@ def process_subscribe():
     if user_in_db:
         result_code = 'ERROR'
         result_text = "Oops! It looks like this number is already subscribed with us!"
-    elif len(fname) == 0 or len(phone_num) == 0:
+    elif len(name) == 0 or len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
     else:
-        crud.create_user(fname, phone_num)
+        crud.create_user(name, phone_num)
         result_code = "SUCCESS"
-        result_text = fname
+        result_text = name
     
     return jsonify({'code': result_code, 'msg': result_text})
    
@@ -52,18 +54,13 @@ def process_unsub():
 
     user_to_remove = crud.get_user_by_phone(phone_num)
 
-    # name = user_to_remove.name
-
     if user_to_remove:
         crud.remove_user(phone_num)
         result_code = 'SUCCESS'
         result_text = user_to_remove.name
-        # result_text = f"Success. {user_to_remove.name} has been unsubscribed."
-        # return jsonify({'code': result_code, 'name': name})
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
-        # return jsonify({'code': result_code, 'msg': result_text})
     else:
         result_code = 'ERROR'
         result_text = "Oops! It doesn't look like this number is subscribed with us."
@@ -71,11 +68,16 @@ def process_unsub():
     return jsonify({'code': result_code, 'msg': result_text})
 
 
-# Api route to serve random affirmation
 @app.route('/api/message-generator', methods=['POST'])
 def random_message():
+    """ Get random message from DB for message generator """
     random_message = crud.get_random_message()
     return jsonify({"text": random_message.text, "author": random_message.author})
+
+
+# @app.route('https://verify.twilio.com/v2/Services/{ServiceSid}/Verifications', methods=['POST'])
+
+
 
 
 if __name__ == '__main__': 
