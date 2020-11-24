@@ -18,10 +18,10 @@ function Subscribe() {
         //     phoneNum: $('#phoneNum').val()
 
         const userInfo = {
-            firstName: document.querySelector('#firstName'),
-            phoneNum: document.querySelector('#phoneNum')
+            firstName: document.querySelector('#firstName').value,
+            phoneNum: document.querySelector('#phoneNum').value
         };
-
+        console.log(userInfo);
 
         // $.post('/api/subscribe', userInfo, (response) => {
         //     if (response.code === "SUCCESS") {
@@ -37,24 +37,25 @@ function Subscribe() {
         // });
 
         fetch('/api/subscribe', {
-            credentials: 'include',
+            // credentials: 'include',
             method: 'POST',
-            body: JSON.stringify(userInfo),
+            // body: userInfo,
         })
-            .then(response => response.json())
-            .then(data => {
+            .then(response => {
                 if (response.code === "SUCCESS") {
-                    ReactDOM.render(
-                        <SuccessSub name={response.msg}/>,
-                        document.querySelector('#root'))
-                    // to do: trigger send message to confirm subscription
+                    console.log(`${response.msg}`);
+                    // ReactDOM.render( 
+                    //     <SuccessSub name={data.msg}/>,
+                    //     document.querySelector('#root'))
+                    // // to do: trigger send message to confirm subscription
                 } else {
-                    const subStatus = document.querySelector('#subStatus');
-                    subStatus.html(`<p>${response.msg}</p>`);
+                    console.log(`${response.msg}`);
+                    // const subStatus = document.querySelector('#subStatus');
+                    // subStatus.html(`<p>${data.msg}</p>`);
                 }
         })
-            .catch(error => console.log('ERROR'))
-        console.log(formData);
+            // .catch(error => console.log('ERROR'))
+        // console.log(formData);
     }
 
     return (

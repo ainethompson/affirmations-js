@@ -7,32 +7,32 @@ function RandomMessage() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        $.post('/api/message-generator', (res) => {
-            const randMsg = $('#randMsg');
-            randMsg.html(`<p>${res.text}</p>
-            <p>- ${res.author}</p>`);
-            console.log(res.text, res.author);
-        }
+        // $.post('/api/message-generator', (res) => {
+        //     const randMsg = $('#randMsg');
+        //     randMsg.html(`<p>${res.text}</p>
+        //     <p>- ${res.author}</p>`);
+        //     console.log(res.text, res.author);
+        // }
 
 
-        const randMsg = document.querySelector('#randMsg');
+        // const randMsg = document.querySelector('#randMsg');
 
-        fetch('/api/message-generator', {
-            method: 'POST'
-        }) 
-            .then((res) => {
-                // const randMsg = document.querySelector('#randMsg');
-                randMsg.html(`<p>${res.text}</p>
+        // fetch('/api/message-generator', {
+        //     method: 'POST'
+        // }) 
+        //     .then((res) => {
+        //         // const randMsg = document.querySelector('#randMsg');
+        //         randMsg.html(`<p>${res.text}</p>
             
-            // .then((mes) => {
+        //     // .then((mes) => {
 
-            // })
-                .html(res.text);
+        //     // })
+        //         .html(res.text);
                     
-                    // `<p>${res.text}</p>
-                    // <p>- ${res.author}</p>`);
-                console.log(res.text, res.author);
-            });
+        //             // `<p>${res.text}</p>
+        //             // <p>- ${res.author}</p>`);
+        //         console.log(res.text, res.author);
+        //     });
 
     }
 
