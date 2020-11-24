@@ -13,7 +13,28 @@ function RandomMessage() {
             <p>- ${res.author}</p>`);
             console.log(res.text, res.author);
         }
-    )}
+
+
+        const randMsg = document.querySelector('#randMsg');
+
+        fetch('/api/message-generator', {
+            method: 'POST'
+        }) 
+            .then((res) => {
+                // const randMsg = document.querySelector('#randMsg');
+                randMsg.html(`<p>${res.text}</p>
+            
+            // .then((mes) => {
+
+            // })
+                .html(res.text);
+                    
+                    // `<p>${res.text}</p>
+                    // <p>- ${res.author}</p>`);
+                console.log(res.text, res.author);
+            });
+
+    }
 
     return (
         <div>

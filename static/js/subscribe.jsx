@@ -37,10 +37,12 @@ function Subscribe() {
         // });
 
         fetch('/api/subscribe', {
+            credentials: 'include',
             method: 'POST',
-            body: userInfo
+            body: JSON.stringify(userInfo),
         })
-            .then(response => {
+            .then(response => response.json())
+            .then(data => {
                 if (response.code === "SUCCESS") {
                     ReactDOM.render(
                         <SuccessSub name={response.msg}/>,
