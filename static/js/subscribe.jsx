@@ -18,45 +18,65 @@ function Subscribe() {
         //     phoneNum: $('#phoneNum').val()
 
         const userInfo = {
-            firstName: document.querySelector('#firstName').value,
-            phoneNum: document.querySelector('#phoneNum').value
+            firstName: document.getElementById('firstName').value,
+            phoneNum: document.getElementById('phoneNum').value
         };
         console.log(userInfo);
 
-        // $.post('/api/subscribe', userInfo, (response) => {
-        //     if (response.code === "SUCCESS") {
-        //         ReactDOM.render(
-        //             <SuccessSub name={response.msg}/>,
-        //             document.querySelector('#root'))
-        //         // to do: trigger send message to confirm subscription
-        //     } 
-        //     else {
-        //         const subStatus = $('#subStatus');
-        //         subStatus.html(`<p>${response.msg}</p>`);
-        //     }
-        // });
+        $.post('/api/subscribe', userInfo, (response) => {
+            if (response.code === "SUCCESS") {
+                ReactDOM.render(
+                    <SuccessSub name={response.msg}/>,
+                    document.querySelector('#root'))
+                // to do: trigger send message to confirm subscription
+            } 
+            else {
+                const subStatus = $('#subStatus');
+                subStatus.html(`<p>${response.msg}</p>`);
+            }
+        });
 
-        fetch('/api/subscribe', {
-            // credentials: 'include',
-            method: 'POST',
-            // body: userInfo,
-        })
-            .then(response => {
-                if (response.code === "SUCCESS") {
-                    console.log(`${response.msg}`);
-                    // ReactDOM.render( 
-                    //     <SuccessSub name={data.msg}/>,
-                    //     document.querySelector('#root'))
-                    // // to do: trigger send message to confirm subscription
-                } else {
-                    console.log(`${response.msg}`);
-                    // const subStatus = document.querySelector('#subStatus');
-                    // subStatus.html(`<p>${data.msg}</p>`);
-                }
-        })
-            // .catch(error => console.log('ERROR'))
-        // console.log(formData);
-    }
+        // const form = new FormData(userInfo);
+        // form.append(document.querySelector('#firstName'));
+        // form.append(document.querySelector('#phoneNum'));
+        // const myHeaders = new Headers();
+
+        // const myRequest = new Request('/api/subscribe', {
+        //     method: 'POST',
+        //     headers: myHeaders,
+
+        // })
+    //     const data = {firstName: 'aine' };
+    //         // document.querySelector('#firstName'),
+    //     // phoneNum: document.querySelector('#phoneNum')};
+
+    //     fetch('/api/subscribe', {
+    //         method: 'POST',
+    //         headers: {
+    //         'Content-Type': 'application/json'
+    //         },
+    //         body: JSON.stringify(data),
+    //   })
+    //     .then (response => response.json())
+    //     .then (data => {
+    //         console.log('Success:', data);
+    //     });
+        // .then(function(response) {
+        //     if (response.code === "SUCCESS") {
+        //         console.log(`${response.msg}`);
+        //         // ReactDOM.render( 
+        //         //     <SuccessSub name={data.msg}/>,
+        //         //     document.querySelector('#root'))
+        //         // // to do: trigger send message to confirm subscription
+        //     } else {
+        //         console.log(`${response.msg}`);
+        //         // const subStatus = document.querySelector('#subStatus');
+        //         // subStatus.html(`<p>${data.msg}</p>`);
+            }
+    // })
+    //     // .catch(error => console.log('ERROR'))
+    //     // console.log(formData);
+    // }
 
     return (
         <div>
