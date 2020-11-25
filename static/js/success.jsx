@@ -23,6 +23,7 @@ function SuccessUnsub(props) {
         </div>
     );
 }
+// to do: add link back to homepage
 
 ReactDOM.render(
     <SuccessUnsub />,

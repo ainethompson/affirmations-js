@@ -13,6 +13,7 @@ class User(db.Model):
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String, nullable=False)
     phone_num = db.Column(db.String, nullable=False, unique=True)
+    confirmed = db.Column(db.Boolean, default=False, nullable=False)
 
     def __repr__(self):
         """ Provide helpful representation when printed """

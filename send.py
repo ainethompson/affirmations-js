@@ -1,5 +1,5 @@
 from twilio.rest import Client
-from flask import session
+# from flask import session
 import json
 import model
 import crud
