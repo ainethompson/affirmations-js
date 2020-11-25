@@ -1,6 +1,4 @@
 // const { func } = require("prop-types");
-
-
 function Subscribe() {
 
     const [formData, setFormData] = React.useState({ firstName: '', phoneNum: '' });
@@ -13,40 +11,10 @@ function Subscribe() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // const userInfo = {
-        //     firstName: $('#firstName').val(),
-        //     phoneNum: $('#phoneNum').val()
-
         const userInfo = {
             firstName: document.getElementById('firstName').value,
             phoneNum: document.getElementById('phoneNum').value
         };
-        // console.log(userInfo);
-
-        // $.post('/api/subscribe', userInfo, (response) => {
-        //     if (response.code === "SUCCESS") {
-        //         ReactDOM.render(
-        //             <SuccessSub name={response.msg}/>,
-        //             document.querySelector('#root'))
-        //         // to do: trigger send message to confirm subscription
-        //     } 
-        //     else {
-        //         const subStatus = $('#subStatus');
-        //         subStatus.html(`<p>${response.msg}</p>`);
-        //     }
-        // });
-
-        // })
-        // const data = {firstName: 'aine' };
-        //         // document.querySelector('#firstName'),
-        //     // phoneNum: document.querySelector('#phoneNum')};
-
-        // fetch('/api/subscribe')
-        //     .then(function(response) {
-        //         return response.json();
-        //     })
-
-        // }
 
         fetch('/api/subscribe', {
             method: 'POST',
@@ -58,19 +26,16 @@ function Subscribe() {
             .then(response => response.json())
             .then(function (response) {
                 if (response.code === "SUCCESS") {
-                    console.log(`${response.msg}`);
                     ReactDOM.render(
                         <SuccessSub name={response.msg} />,
                         document.getElementById('root'))
                     // // to do: trigger send message to confirm subscription
                 } else {
-                    console.log(`${response.msg}`);
                     const subStatus = document.getElementById('subStatus');
                     subStatus.innerHTML = `<p>${response.msg}</p>`;
                 }
             })
         // .catch(error => console.log('ERROR'))
-        // console.log(formData);
     }
 
     return (

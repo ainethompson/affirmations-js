@@ -27,19 +27,11 @@ def homepage():
 def process_subscribe():
     """ Submits form to save user info to db """
 
-    # print(request.get_json())
     data = request.get_json()
     name = data['firstName'].title()
     phone_num = data['phoneNum']
-        
-        # 'firstName').title()
-    # phone_num = request.form.get('phoneNum')
-
 
     user_in_db = crud.get_user_by_phone(phone_num)
-
-    
-    # return jsonify({'code': 200, 'msg': name})
 
     if user_in_db:
         result_code = 'ERROR'
@@ -59,7 +51,9 @@ def process_subscribe():
 @app.route('/api/unsubscribe', methods=['POST'])
 def process_unsub():
     """ Submits form to delete user info from db """
-    phone_num = request.form.get('phoneNum')
+
+    data = request.get_json()
+    phone_num = data['phoneNum']
 
     user_to_remove = crud.get_user_by_phone(phone_num)
 
