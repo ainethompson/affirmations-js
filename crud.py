@@ -15,6 +15,10 @@ def create_user(name, phone_num):
 
     return user
 
+def update_to_confirmed(user):
+    user.confirmed = True
+    db.session.commit()
+
 def get_user_by_id(user_id):
     """Return a user by primary key."""
 
