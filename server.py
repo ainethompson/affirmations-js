@@ -3,6 +3,7 @@ from model import Message, connect_to_db
 import crud
 import os
 import json
+# import confirm
 from jinja2 import StrictUndefined
 
 secrets_dict = json.loads(open('data/secrets.json').read())
@@ -23,6 +24,8 @@ def homepage():
     return render_template('base.html')
 
 
+
+
 @app.route('/api/subscribe', methods=['POST'])
 def process_subscribe():
     """ Submits form to save user info to db """
@@ -38,14 +41,27 @@ def process_subscribe():
         result_text = "Oops! It looks like this number is already subscribed with us!"
     elif len(name) == 0 or len(phone_num) == 0:
         result_code = 'ERROR'
-        result_text = "Please fill out the given fields"
+        result_text = "Please fill out the given fields."
     else:
         crud.create_user(name, phone_num)
         result_code = "SUCCESS"
+        # result_text = "Success! You should receive a text to confirm your subscription shortly."
         result_text = name
-    
+        user = crud.get_user_by_phone(phone_num)
+        print(user)
+        confirm.send_confirmation(user)
+        # send user object to confirm.py and call function to send confirmation text
+
     return jsonify({'code': result_code, 'msg': result_text})
    
+
+# @app.route('/api/confirm-subscription', methods=['POST'])
+# def confirm_sub():
+#     phone_num = request.get_json['phoneNum']
+#     user_to_confirm = crud.get_user_by_phone(phone_num)
+# Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
+
+# Get response from confirmation text, send to confirm.py
 
 
 @app.route('/api/unsubscribe', methods=['POST'])
@@ -80,7 +96,10 @@ def random_message():
 
 # @app.route('https://verify.twilio.com/v2/Services/{ServiceSid}/Verifications', methods=['POST'])
 
-
+@app.route('/api/confirm-subscription', methods=['POST'])
+def confirm_sub():
+    phone_num = request.get_json['phoneNum']
+    user_to_confirm = crud.get_user_by_phone(phone_num)
 # Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
 
 if __name__ == '__main__': 
