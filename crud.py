@@ -22,7 +22,7 @@ def update_to_confirmed(user):
 def get_user_by_id(user_id):
     """Return a user by primary key."""
 
-    return User.query.get(user_id).one()
+    return User.query.get(user_id)
 
 def get_user_by_phone(phone_num):
     """ Return a user by phone_num"""
@@ -37,6 +37,13 @@ def get_all_phone_nums():
   
     all_phone_nums = db.session.query(User.phone_num).all()
     return all_phone_nums
+
+def get_all_confirmed_phones():
+
+    all_confirmed_phones = db.session.query(User.phone_num).filter(User.confirmed == True).all()
+
+    # SELECT phone_num FROM users WHERE confirmed == True
+    return all_confirmed_phones
 
 def remove_user(phone_num):
     """ Delete a user from DB by phone num """
