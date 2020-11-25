@@ -41,7 +41,6 @@ def get_all_phone_nums():
 def get_all_confirmed_phones():
 
     all_confirmed_phones = db.session.query(User.phone_num).filter(User.confirmed == True).all()
-
     # SELECT phone_num FROM users WHERE confirmed == True
     return all_confirmed_phones
 

@@ -17,7 +17,7 @@ if __name__== '__main__':
     # phone ='+15109819837'
     
 # TO SEND TO EVERY USER:
-    all_phones = crud.get_all_phone_nums()
+    all_phones = crud.get_all_confirmed_phones()
     phone_list = []
 
     for phone_num in all_phones:

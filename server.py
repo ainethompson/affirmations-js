@@ -81,7 +81,7 @@ def random_message():
 # @app.route('https://verify.twilio.com/v2/Services/{ServiceSid}/Verifications', methods=['POST'])
 
 
-
+# Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
 
 if __name__ == '__main__': 
     connect_to_db(app)
