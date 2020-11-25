@@ -27,10 +27,19 @@ def homepage():
 def process_subscribe():
     """ Submits form to save user info to db """
 
-    name = request.form.get('firstName').title()
-    phone_num = request.form.get('phoneNum')
+    # print(request.get_json())
+    data = request.get_json()
+    name = data['firstName'].title()
+    phone_num = data['phoneNum']
+        
+        # 'firstName').title()
+    # phone_num = request.form.get('phoneNum')
+
 
     user_in_db = crud.get_user_by_phone(phone_num)
+
+    
+    # return jsonify({'code': 200, 'msg': name})
 
     if user_in_db:
         result_code = 'ERROR'
