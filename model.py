@@ -17,7 +17,7 @@ class User(db.Model):
 
     def __repr__(self):
         """ Provide helpful representation when printed """
-        return f"<User_id = {self.user_id}, First name = {self.name}, phone number = {self.phone_num}>"
+        return f"<User_id = {self.user_id}, name = {self.name}, phone = {self.phone_num}, confirmed = {self.confirmed}>"
 # users_messages = list of UserMessage objects
 # call user.users_messages to get all messages a user has been sent
 

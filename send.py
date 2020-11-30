@@ -3,18 +3,16 @@ from twilio.rest import Client
 import json
 import model
 import crud
-from server import twilio_sid, auth_token
+from server import twilio_sid, auth_token, message_service_sid
 import schedule
 import time
 from random import choice, randint
-
 
 if __name__== '__main__':
     from server import app
     model.connect_to_db(app)
 
     twilio_number = '+15103300507'
-    # phone ='+15109819837'
     
 # TO SEND TO EVERY USER:
     all_phones = crud.get_all_confirmed_phones()
@@ -50,13 +48,12 @@ def send_message():
 
         user = crud.get_user_by_phone(new_str)
 
-
         text = to_send.text
         author = to_send.author
         quote = f"✨ Good morning {user.name} ✨ \n\n{text} \n\n- {author}"
         
         message = client.messages.create(to=phone,
-                                from_=twilio_number,
+                                messaging_service_sid=message_service_sid,
                                 body=quote)
         print(message)
         

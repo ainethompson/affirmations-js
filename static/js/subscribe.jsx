@@ -38,7 +38,6 @@ function Subscribe() {
             })
         // .catch(error => console.log('ERROR'))
     }
-
     return (
         <div>
             <form className='form-group' action='/subscribe' method='POST' onSubmit={handleSubmit}>
@@ -105,7 +104,6 @@ function Unsubscribe() {
             });
         // .catch(error => console.log('ERROR'))
     }
-
     return (
         <div>
             <form className='form-group' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>

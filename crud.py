@@ -44,11 +44,11 @@ def get_all_confirmed_phones():
     # SELECT phone_num FROM users WHERE confirmed == True
     return all_confirmed_phones
 
-def remove_user(phone_num):
+def remove_user(user):
     """ Delete a user from DB by phone num """
-
-    user = get_user_by_phone(phone_num)
-    db.session.delete(user)
+    user.confirmed = False
+    # user = get_user_by_phone(phone_num)
+    # db.session.delete(user)
     db.session.commit()
 
     return user

@@ -3,8 +3,10 @@ from model import Message, connect_to_db
 import crud
 import os
 import json
-# import confirm
+# from confirm 
+import confirm
 from jinja2 import StrictUndefined
+from twilio.twiml.messaging_response import MessagingResponse
 
 secrets_dict = json.loads(open('data/secrets.json').read())
 
@@ -14,16 +16,14 @@ app.jinja_env.undefined = StrictUndefined
   
 twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
 auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
-
+message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
 verify_service_sid = secrets_dict["VERIFY_SERVICE_SID"]
+
 
 @app.route('/')
 def homepage():
     """ View Homepage. """
-
     return render_template('base.html')
-
-
 
 
 @app.route('/api/subscribe', methods=['POST'])
@@ -33,7 +33,6 @@ def process_subscribe():
     data = request.get_json()
     name = data['firstName'].title()
     phone_num = data['phoneNum']
-
     user_in_db = crud.get_user_by_phone(phone_num)
 
     if user_in_db:
@@ -55,13 +54,29 @@ def process_subscribe():
     return jsonify({'code': result_code, 'msg': result_text})
    
 
-# @app.route('/api/confirm-subscription', methods=['POST'])
-# def confirm_sub():
-#     phone_num = request.get_json['phoneNum']
-#     user_to_confirm = crud.get_user_by_phone(phone_num)
-# Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
+# @app.route('/api/confirm-subscription', methods=['GET','POST'])
+# def confirm_sub_reply():
+#     """ Use twilio to respond to users confirmation text
+#     Send a dynamic reply to an incoming text message"""
 
-# Get response from confirmation text, send to confirm.py
+#     # to do: get incoming number
+#     # user = crud.get_user_by_phone(#incoming number)
+
+#     # Get the message the user sent our Twilio number
+#     body = request.values.get('Body', None)
+
+#     # Start our TwiML response
+#     resp = MessagingResponse()
+
+#     # Determine the right reply for this message
+#     if body == 'YES':
+#         resp.message("Success! You are now subscribed. Text 'STOP' at any time to unsubscribe.")
+#         # crud.update_to_confirmed(user)
+#     elif body == 'STOP':
+#         resp.message("Success! You are now unsubscribed.")
+#         # crud.remove_user(user)
+
+#     return str(resp)
 
 
 @app.route('/api/unsubscribe', methods=['POST'])
@@ -74,9 +89,9 @@ def process_unsub():
     user_to_remove = crud.get_user_by_phone(phone_num)
 
     if user_to_remove:
-        crud.remove_user(phone_num)
         result_code = 'SUCCESS'
         result_text = user_to_remove.name
+        crud.remove_user(user_to_remove)
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
@@ -94,12 +109,11 @@ def random_message():
     return jsonify({"text": random_message.text, "author": random_message.author})
 
 
-# @app.route('https://verify.twilio.com/v2/Services/{ServiceSid}/Verifications', methods=['POST'])
 
-@app.route('/api/confirm-subscription', methods=['POST'])
-def confirm_sub():
-    phone_num = request.get_json['phoneNum']
-    user_to_confirm = crud.get_user_by_phone(phone_num)
+# @app.route('/api/confirm-subscription', methods=['POST'])
+# def confirm_sub():
+#     phone_num = request.get_json['phoneNum']
+#     user_to_confirm = crud.get_user_by_phone(phone_num)
 # Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
 
 if __name__ == '__main__': 
