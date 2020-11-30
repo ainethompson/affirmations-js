@@ -46,9 +46,9 @@ def get_all_confirmed_phones():
 
 def remove_user(user):
     """ Delete a user from DB by phone num """
-    user.confirmed = False
+    # user.confirmed = False
     # user = get_user_by_phone(phone_num)
-    # db.session.delete(user)
+    db.session.delete(user)
     db.session.commit()
 
     return user

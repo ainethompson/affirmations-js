@@ -3,8 +3,8 @@ from model import Message, connect_to_db
 import crud
 import os
 import json
-# from confirm 
-import confirm
+from verify import send_token
+
 from jinja2 import StrictUndefined
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -36,6 +36,7 @@ def process_subscribe():
     user_in_db = crud.get_user_by_phone(phone_num)
 
     if user_in_db:
+        # if user_in_db.confirmed == True:
         result_code = 'ERROR'
         result_text = "Oops! It looks like this number is already subscribed with us!"
     elif len(name) == 0 or len(phone_num) == 0:
@@ -46,9 +47,13 @@ def process_subscribe():
         result_code = "SUCCESS"
         # result_text = "Success! You should receive a text to confirm your subscription shortly."
         result_text = name
-        user = crud.get_user_by_phone(phone_num)
-        print(user)
-        confirm.send_confirmation(user)
+
+        phone_str =''.join(list(phone_num)) #  ('510-981-9837',) --> 510-981-9837
+        raw_phone = phone_str.replace('-', '') #  510-981-9837 --> 5109819837
+        phone = f'+1{raw_phone}' #  5109819837 --> +15109819837
+        # user = crud.get_user_by_phone(phone_num)
+        print(phone)
+        send_token(phone)
         # send user object to confirm.py and call function to send confirmation text
 
     return jsonify({'code': result_code, 'msg': result_text})
@@ -88,7 +93,7 @@ def process_unsub():
 
     user_to_remove = crud.get_user_by_phone(phone_num)
 
-    if user_to_remove:
+    if user_to_remove.confirmed == True:
         result_code = 'SUCCESS'
         result_text = user_to_remove.name
         crud.remove_user(user_to_remove)
@@ -108,7 +113,16 @@ def random_message():
     random_message = crud.get_random_message()
     return jsonify({"text": random_message.text, "author": random_message.author})
 
+@app.route('/api/verify-subscription', methods=['POST'])
+def confirm_sub():
+    """ Check code entered in form with code sent to user """
+    # if same:
+    #   call crud.update_to_confirmed
+    # else:
+        # resend code
+        # return try again
 
+    return jsonify({})
 
 # @app.route('/api/confirm-subscription', methods=['POST'])
 # def confirm_sub():

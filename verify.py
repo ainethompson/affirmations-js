@@ -2,7 +2,14 @@
 import os
 from twilio.rest import Client
 import json
-from server import twilio_sid, auth_token, verify_service_sid
+# from server import twilio_sid, auth_token, verify_service_sid
+
+
+secrets_dict = json.loads(open('data/secrets.json').read())
+twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
+auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
+message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
+verify_service_sid = secrets_dict["VERIFY_SERVICE_SID"]
 
 
 # Your Account Sid and Auth Token from twilio.com/console
@@ -29,12 +36,12 @@ client = Client(account_sid, auth_token)
 #     return service.sid
 
 
-def send_token():
+def send_token(phone):
     """ Start a verification, send verification token """
     verification = client.verify \
                         .services(verify_service_sid) \
                         .verifications \
-                        .create(to='+15109819837', channel='sms')
+                        .create(to=phone, channel='sms')
     print(verification.status)
 
     # return verification.sid

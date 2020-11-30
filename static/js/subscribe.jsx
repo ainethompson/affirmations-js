@@ -27,6 +27,7 @@ function Subscribe() {
             .then(function (response) {
                 if (response.code === "SUCCESS") {
                     ReactDOM.render(
+                        // to do: Call verify component instead, find way to get name through to success page
                         <SuccessSub name={response.msg} />,
                         document.getElementById('root'))
                     // // to do: trigger send message to confirm subscription
