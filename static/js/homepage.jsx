@@ -1,10 +1,8 @@
 
 
 function Homepage() {
-    // ReactDOM.render(
-    //     <RandomMessage />,
-    //     document.querySelector('#root')
-    // );
+    
+  
     return (
         <div className="container">
             <h1>Welcome!</h1>
@@ -18,6 +16,9 @@ function Homepage() {
                     </p>
                     <p>
                         <ReactRouterDOM.Link to='/success'></ReactRouterDOM.Link>
+                    </p>
+                    <p>
+                        <ReactRouterDOM.Link to='/confirm-subscription'>verify form</ReactRouterDOM.Link>
                     </p>
                     <p>
                         <ReactRouterDOM.Link to='/unsubscribe'>Unsubscribe</ReactRouterDOM.Link>
@@ -41,6 +42,9 @@ function Homepage() {
                         <ReactRouterDOM.Route path='/unsubscribe'>
                             <Unsubscribe />
                         </ReactRouterDOM.Route>
+                        {/* <ReactRouterDOM.Route path='/confirm-subscription'>
+                            <VerifySub />
+                        </ReactRouterDOM.Route> */}
                     </ReactRouterDOM.Switch> 
                 </ReactRouterDOM.BrowserRouter>
             </nav>
@@ -50,7 +54,14 @@ function Homepage() {
 
 
 ReactDOM.render(
+    <RandomMessage />,
+    document.querySelector('#root')
+);
+
+ReactDOM.render(
     <Homepage />,
     document.querySelector('#root')
 );
+
+
 

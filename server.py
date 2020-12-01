@@ -54,7 +54,7 @@ def process_subscribe():
         # user = crud.get_user_by_phone(phone_num)
         print(phone)
         send_token(phone)
-        # send user object to confirm.py and call function to send confirmation text
+        # send phone number to verify.py and call function to send confirmation text
 
     return jsonify({'code': result_code, 'msg': result_text})
    
@@ -116,13 +116,35 @@ def random_message():
 @app.route('/api/verify-subscription', methods=['POST'])
 def confirm_sub():
     """ Check code entered in form with code sent to user """
+    pass
+
+    # get user phone number
+    # get token sent to them
+    # get code entered
+
+    # call verify.check_verification?
+
     # if same:
     #   call crud.update_to_confirmed
     # else:
         # resend code
         # return try again
+        
+    # token_input = request.get_json()['tokenInput']
 
-    return jsonify({})
+    # user = crud.get_user_by_phone(phone)
+
+    # if token_input == given token:
+    #     result_code = 'SUCCESS'
+    #     result_text = ''
+    #     crud.update_to_confirmed(user)
+    # else:
+    #     result_code = 'ERROR'
+    #     result_text = 'The code you entered was incorrect. We are sending you a new code now.'
+    #     send_token(phone)
+        # re render form?
+
+    # return jsonify({'code': result_code, 'msg': result_text})
 
 # @app.route('/api/confirm-subscription', methods=['POST'])
 # def confirm_sub():

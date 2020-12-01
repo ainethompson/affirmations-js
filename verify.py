@@ -11,9 +11,6 @@ auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
 message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
 verify_service_sid = secrets_dict["VERIFY_SERVICE_SID"]
 
-
-# Your Account Sid and Auth Token from twilio.com/console
-# and set the environment variables. See http://twil.io/secure
 account_sid = twilio_sid
 auth_token = auth_token
 client = Client(account_sid, auth_token)
@@ -24,9 +21,6 @@ client = Client(account_sid, auth_token)
 #                                         friendly_name='New Service'
 #                                     )
 #     print(service.sid)
-#     return service
-
-# service = create_service()
 
 # def fetch_service():
 #     """ Fetch a service """
