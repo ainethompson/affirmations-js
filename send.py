@@ -1,9 +1,7 @@
 from twilio.rest import Client
-# from flask import session
 import json
 import model
 import crud
-from server import twilio_sid, auth_token, message_service_sid
 import schedule
 import time
 from random import choice, randint
@@ -12,7 +10,14 @@ if __name__== '__main__':
     from server import app
     model.connect_to_db(app)
 
-    twilio_number = '+15103300507'
+    secrets_dict = json.loads(open('data/secrets.json').read())
+    twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
+    auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
+    message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
+
+
+    # twilio_number = '+15103300507'
+    client = Client(twilio_sid, auth_token)
     
 # TO SEND TO EVERY USER:
     all_phones = crud.get_all_confirmed_phones()
@@ -25,8 +30,6 @@ if __name__== '__main__':
         phone_list.append(f'+1{raw_phone}') #  5109819837 --> +15109819837
 
 def send_message():
-
-    client = Client(twilio_sid, auth_token)
 
     unsent_messages = crud.get_unsent_messages()
     i = randint(0, len(unsent_messages))
@@ -60,6 +63,14 @@ def send_message():
         crud.create_user_message(user, to_send)
 
     crud.update_to_sent(to_send)
+
+
+# schedule.every(10).seconds.do(send_message)
+# # schedule.every().day.at("19:39").do(send_message)
+
+# while True:
+#         schedule.run_pending()
+#         time.sleep(1)
 
 
 schedule.every(10).seconds.do(send_message)

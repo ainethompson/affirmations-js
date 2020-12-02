@@ -27,7 +27,7 @@ function Subscribe() {
             .then(function (response) {
                 if (response.code === "SUCCESS") {
                     ReactDOM.render(
-                        <VerifySub phoneNum={formData.phoneNum}/>,
+                        <VerifySub phoneNum={formData.phoneNum} name={formData.firstName} />,
                         document.getElementById('root'))
                         // to do: Call verify component instead, find way to get name through to success page
                         // <SuccessSub name={response.msg} />,

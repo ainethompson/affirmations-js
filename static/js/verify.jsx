@@ -12,7 +12,8 @@ function VerifySub(props) {
 
         const values = {
             inputCode: document.getElementById('inputCode').value,
-            phoneNum: props.phoneNum
+            phoneNum: props.phoneNum,
+            name: props.name
         };
 
         fetch('/api/confirm-subscription', {
@@ -40,8 +41,9 @@ function VerifySub(props) {
         <div>
             <form className='form-group' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
                 <div>
+                    <p>You should receive a text with a confirmation code momentarily.</p>
                     <label>
-                        Please enter the 6 digit confirmation code:
+                        Please enter the 6 digit code:
                     <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="123456" onChange={handleChange} />
                     </label>
                 </div>

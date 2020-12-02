@@ -2,8 +2,7 @@
 import os
 from twilio.rest import Client
 import json
-# from server import twilio_sid, auth_token, verify_service_sid
-
+from crud import get_user_by_phone
 
 secrets_dict = json.loads(open('data/secrets.json').read())
 twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
@@ -24,30 +23,6 @@ def send_token(phone):
                         .create(to=phone, channel='sms')
     print(verification.status)
 
-    # return verification.sid
-
-
-# def fetch_verification():
-#     """ Fetch a verification """
-#     verification = client.verify \
-#                         .services(verify_service_sid) \
-#                         .verifications(verification.sid) \
-#                         .fetch()
-#     print(verification.status)
-
-#     return verification.status
-
-
-# def approve_verification():
-#     """ Approve verification """
-#     verification = client.verify \
-#                         .services(service.sid) \
-#                         .verifications('+15109819837') \
-#                         .update(status='approved')
-#     print(verification.status)
-
-#     return verification.status
-
 
 def check_verification(phone, code):
     """ Check a verification (validate) """
@@ -57,3 +32,13 @@ def check_verification(phone, code):
                             .create(to=phone, code=code)
     print(verification_check.status)
     return verification_check.status
+
+
+def confirm_unsubscribe(phone):
+    
+    user = get_user_by_phone(phone)
+    quote = f'{user.name} has been unsubscribed from ... . Come back any time by visiting website ...'
+    message = client.messages.create(to=phone,
+                                    messaging_service_sid=message_service_sid,
+                                    body=quote)
+    print(message)

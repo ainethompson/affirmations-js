@@ -10,12 +10,11 @@ const {Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collaps
 
 
 function Homepage() {
-    
-//   to do: put message generator button directly on homescreen (not linked)
+
     return (
         <div className="container">
             <h1>Welcome!</h1>
-            <nav>
+            <nav className="header">
                 <Router>
                     <p>
                         <Link to='/subscribe'>Subscribe</Link>
@@ -23,18 +22,9 @@ function Homepage() {
                     <p> 
                         <Link to='/about'>About us</Link>
                     </p>
-                    {/* <p>
-                        <Link to='/success'></Link>
-                    </p> */}
-                    {/* <p>
-                        <Link to='/confirm-subscription'>verify form</Link>
-                    </p> */}
                     <p>
                         <Link to='/unsubscribe'>Unsubscribe</Link>
                     </p>
-                    {/* <p>
-                        <Link to='/message-generator'>Message Generator</Link>
-                    </p> */}
                     <Switch>
                         <Route path='/subscribe'>
                             <Subscribe />
@@ -51,10 +41,13 @@ function Homepage() {
                         <Route path='/unsubscribe'>
                             <Unsubscribe />
                         </Route>
+                        <Route path='/'>
+                            <Homepage />
+                        </Route>
                         <Route path='/confirm-subscription'>
                             <VerifySub />
                         </Route>
-                        {/* <Route>
+                        {/* <Route path='/error'>
                             <ErrorPage />
                         </Route> */}
                     </Switch> 
@@ -64,12 +57,6 @@ function Homepage() {
         </div>
     );
 }
-
-
-// ReactDOM.render(
-//     <RandomMessage />,
-//     document.querySelector('#root')
-// );
 
 ReactDOM.render(
     <Homepage />,

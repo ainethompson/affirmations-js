@@ -1,7 +1,9 @@
 
-/* body {
-    background-color: #ffe6ff;
-} */
+body {
+    background-image: url('/static/snow-image-hb.jpg');
+    transparency: 0.9
+    /* background-color: #ffe6ff; */
+}
 
 .container {
     text-align: center;

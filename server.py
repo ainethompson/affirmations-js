@@ -1,12 +1,15 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import Message, connect_to_db
-import crud
+# import crud
 import os
 import json
-from verify import send_token, check_verification
+import crud
+# from send import confirm_unsubscribe
+from verify import send_token, check_verification, confirm_unsubscribe
+
 
 from jinja2 import StrictUndefined
-from twilio.twiml.messaging_response import MessagingResponse
+# from twilio.twiml.messaging_response import MessagingResponse
 
 secrets_dict = json.loads(open('data/secrets.json').read())
 
@@ -61,18 +64,6 @@ def process_subscribe():
 @app.route('/api/confirm-subscription', methods=['POST'])
 def confirm_sub():
     """ Check code entered in form with code sent to user """
-
-    # get user phone number
-    # get token sent to them
-    # get code entered
-
-    # call verify.check_verification?
-
-    # if same:
-    #   call crud.update_to_confirmed
-    # else:
-        # resend code
-        # return try again
         
 
     input_code = request.get_json()['inputCode']
@@ -90,7 +81,6 @@ def confirm_sub():
 
     status = check_verification(phone, input_code)
 
-
     if status == 'approved':
         result_code = 'SUCCESS'
         result_text = user.name
@@ -102,12 +92,6 @@ def confirm_sub():
         # re render form?
 
     return jsonify({'code': result_code, 'msg': result_text})
-
-# @app.route('/api/confirm-subscription', methods=['POST'])
-# def confirm_sub():
-#     phone_num = request.get_json['phoneNum']
-#     user_to_confirm = crud.get_user_by_phone(phone_num)
-# Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
 
 
 @app.route('/api/unsubscribe', methods=['POST'])
@@ -123,6 +107,8 @@ def process_unsub():
         result_code = 'SUCCESS'
         result_text = user_to_remove.name
         crud.remove_user(user_to_remove)
+        confirm_unsubscribe(phone_num)
+
     elif len(phone_num) == 0:
         result_code = 'ERROR'
         result_text = "Please fill out the given fields"
