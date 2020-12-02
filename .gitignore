@@ -1,3 +1,6 @@
 env
 __pycache__
 data/secrets.json
+verify-v2-quickstart-python/verify/.env
+verify-v2-quickstart-python/verify/.env.example
+verify-v2-quickstart-python/verify/.gitignore
