@@ -8,20 +8,7 @@ function SuccessSub(props) {
     return (
         <div>
             <h2>Success! {props.name}'s subscription has been confirmed.</h2>
-            {/* <Router>
-                <Redirect to='/' />
-            </Router> */}
-            <Router>
-                <p>
-                    <Link to='/'>Return to homepage</Link>
-                </p>
-                <Switch>
-                    <Redirect to='/' />
-                    {/* <Route path='/'>
-                        <Homepage />
-                    </Route> */}
-                </Switch>
-            </Router>
+            <a href='/'>Return to Homepage</a>
         </div>
     );
 }
@@ -38,22 +25,7 @@ function SuccessUnsub(props) {
     return (
         <div>
             <p>Success, {props.name} has been unsubscribed. Come back any time!</p>
-            {/* <Router>
-                <Redirect to='/'>Return to Homepage</Redirect>
-            </Router> */}
-            <Router>
-                <p>
-                    <Link to='/'>Return to homepage</Link>
-                </p>
-                {/* <Switch>
-                    <Redirect to='/'>
-                        <Homepage />
-                    </RedirectOnClick> 
-                    <Route path='/'>
-                        <Homepage />
-                    </Route>
-                </Switch> */}
-            </Router>
+            <a href='/'>Return to Homepage</a>
         </div>
     );
 }

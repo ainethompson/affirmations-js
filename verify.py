@@ -2,7 +2,8 @@
 import os
 from twilio.rest import Client
 import json
-from crud import get_user_by_phone
+import crud
+import pdb
 
 secrets_dict = json.loads(open('data/secrets.json').read())
 twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
@@ -36,7 +37,10 @@ def check_verification(phone, code):
 
 def confirm_unsubscribe(phone):
     
-    user = get_user_by_phone(phone)
+    user = crud.get_user_by_phone(phone)
+    # pdb.set_trace()
+    print(user)
+
     quote = f'{user.name} has been unsubscribed from ... . Come back any time by visiting website ...'
     message = client.messages.create(to=phone,
                                     messaging_service_sid=message_service_sid,

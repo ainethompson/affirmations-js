@@ -8,23 +8,28 @@ const Autocomplete = React;
 const {Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse, 
 	Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
 
+// const Navigation = {
+//     true: (
+//     <Navbar sticky="top" bg="light" expand="lg">
+
+
+
+//     </Navbar>
+// }
+
 
 function Homepage() {
 
     return (
-        <div className="container">
-            <h1>Welcome!</h1>
-            <nav className="header">
-                <Router>
-                    <p>
-                        <Link to='/subscribe'>Subscribe</Link>
-                    </p>
-                    <p> 
-                        <Link to='/about'>About us</Link>
-                    </p>
-                    <p>
-                        <Link to='/unsubscribe'>Unsubscribe</Link>
-                    </p>
+        <div className="container" width="100vw" height="vh">
+            {/* <nav className="header"> */}
+            <Router>
+                <Navbar>
+                    <Nav.Item href='/subscribe'><Nav.Link as={Link} to='/subscribe'>Subscribe</Nav.Link></Nav.Item>
+                    <Nav.Item href='/about'><Nav.Link as={Link} to='/about'>About Us</Nav.Link></Nav.Item>
+                    <Nav.Item href='/unsubscribe'><Nav.Link as={Link} to='/unsubscribe'>Unsubscribe</Nav.Link></Nav.Item>
+                </Navbar>
+                    <h1 className="header">Welcome!</h1>
                     <Switch>
                         <Route path='/subscribe'>
                             <Subscribe />
@@ -41,9 +46,9 @@ function Homepage() {
                         <Route path='/unsubscribe'>
                             <Unsubscribe />
                         </Route>
-                        <Route path='/'>
+                        {/* <Route path='/'>
                             <Homepage />
-                        </Route>
+                        </Route> */}
                         <Route path='/confirm-subscription'>
                             <VerifySub />
                         </Route>
@@ -52,7 +57,7 @@ function Homepage() {
                         </Route> */}
                     </Switch> 
                 </Router>
-            </nav>
+            {/* // </nav> */}
             <RandomMessage />
         </div>
     );
@@ -62,6 +67,3 @@ ReactDOM.render(
     <Homepage />,
     document.querySelector('#root')
 );
-
-
-

@@ -1,15 +1,10 @@
 from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import Message, connect_to_db
-# import crud
+import crud
 import os
 import json
-import crud
-# from send import confirm_unsubscribe
 from verify import send_token, check_verification, confirm_unsubscribe
-
-
 from jinja2 import StrictUndefined
-# from twilio.twiml.messaging_response import MessagingResponse
 
 secrets_dict = json.loads(open('data/secrets.json').read())
 
@@ -48,7 +43,6 @@ def process_subscribe():
     else:
         crud.create_user(name, phone_num)
         result_code = "SUCCESS"
-        # result_text = "Success! You should receive a text to confirm your subscription shortly."
         result_text = name
 
         phone_str =''.join(list(phone_num)) #  ('510-981-9837',) --> 510-981-9837
@@ -56,7 +50,6 @@ def process_subscribe():
         phone = f'+1{raw_phone}' #  5109819837 --> +15109819837
         print(phone)
         send_token(phone)
-        # send phone number to verify.py and call function to send confirmation text
 
     return jsonify({'code': result_code, 'msg': result_text})
 
@@ -69,11 +62,11 @@ def confirm_sub():
     input_code = request.get_json()['inputCode']
     phone_num = request.get_json()['phoneNum']
 
+    user = crud.get_user_by_phone(phone_num)
+
     phone_str =''.join(list(phone_num)) #  ('510-981-9837',) --> 510-981-9837
     raw_phone = phone_str.replace('-', '') #  510-981-9837 --> 5109819837
     phone = f'+1{raw_phone}' #  5109819837 --> +15109819837
-
-    user = crud.get_user_by_phone(phone_num)
 
     print("User's info")
     print(input_code)
@@ -106,8 +99,8 @@ def process_unsub():
     if user_to_remove.confirmed == True:
         result_code = 'SUCCESS'
         result_text = user_to_remove.name
-        crud.remove_user(user_to_remove)
         confirm_unsubscribe(phone_num)
+        crud.remove_user(user_to_remove)
 
     elif len(phone_num) == 0:
         result_code = 'ERROR'
