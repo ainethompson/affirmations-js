@@ -15,20 +15,6 @@ account_sid = twilio_sid
 auth_token = auth_token
 client = Client(account_sid, auth_token)
 
-# def create_service():
-#     """ Create a service """
-#     service = client.verify.services.create(
-#                                         friendly_name='New Service'
-#                                     )
-#     print(service.sid)
-
-# def fetch_service():
-#     """ Fetch a service """
-#     service = client.verify.services(verify_service_sid).fetch()
-#     print(service.sid)
-
-#     return service.sid
-
 
 def send_token(phone):
     """ Start a verification, send verification token """
@@ -63,12 +49,11 @@ def send_token(phone):
 #     return verification.status
 
 
-def check_verification():
+def check_verification(phone, code):
     """ Check a verification (validate) """
     verification_check = client.verify \
                             .services(verify_service_sid) \
                             .verification_checks \
-                            .create(to='+15109819837', code='123456')
+                            .create(to=phone, code=code)
     print(verification_check.status)
-
     return verification_check.status

@@ -3,7 +3,7 @@ from model import Message, connect_to_db
 import crud
 import os
 import json
-from verify import send_token
+from verify import send_token, check_verification
 
 from jinja2 import StrictUndefined
 from twilio.twiml.messaging_response import MessagingResponse
@@ -51,37 +51,63 @@ def process_subscribe():
         phone_str =''.join(list(phone_num)) #  ('510-981-9837',) --> 510-981-9837
         raw_phone = phone_str.replace('-', '') #  510-981-9837 --> 5109819837
         phone = f'+1{raw_phone}' #  5109819837 --> +15109819837
-        # user = crud.get_user_by_phone(phone_num)
         print(phone)
         send_token(phone)
         # send phone number to verify.py and call function to send confirmation text
 
     return jsonify({'code': result_code, 'msg': result_text})
-   
 
-# @app.route('/api/confirm-subscription', methods=['GET','POST'])
-# def confirm_sub_reply():
-#     """ Use twilio to respond to users confirmation text
-#     Send a dynamic reply to an incoming text message"""
 
-#     # to do: get incoming number
-#     # user = crud.get_user_by_phone(#incoming number)
+@app.route('/api/confirm-subscription', methods=['POST'])
+def confirm_sub():
+    """ Check code entered in form with code sent to user """
 
-#     # Get the message the user sent our Twilio number
-#     body = request.values.get('Body', None)
+    # get user phone number
+    # get token sent to them
+    # get code entered
 
-#     # Start our TwiML response
-#     resp = MessagingResponse()
+    # call verify.check_verification?
 
-#     # Determine the right reply for this message
-#     if body == 'YES':
-#         resp.message("Success! You are now subscribed. Text 'STOP' at any time to unsubscribe.")
-#         # crud.update_to_confirmed(user)
-#     elif body == 'STOP':
-#         resp.message("Success! You are now unsubscribed.")
-#         # crud.remove_user(user)
+    # if same:
+    #   call crud.update_to_confirmed
+    # else:
+        # resend code
+        # return try again
+        
 
-#     return str(resp)
+    input_code = request.get_json()['inputCode']
+    phone_num = request.get_json()['phoneNum']
+
+    phone_str =''.join(list(phone_num)) #  ('510-981-9837',) --> 510-981-9837
+    raw_phone = phone_str.replace('-', '') #  510-981-9837 --> 5109819837
+    phone = f'+1{raw_phone}' #  5109819837 --> +15109819837
+
+    user = crud.get_user_by_phone(phone_num)
+
+    print("User's info")
+    print(input_code)
+    print(phone)
+
+    status = check_verification(phone, input_code)
+
+
+    if status == 'approved':
+        result_code = 'SUCCESS'
+        result_text = user.name
+        crud.update_to_confirmed(user)
+    else:
+        result_code = 'ERROR'
+        result_text = 'The code you entered was incorrect. We are sending you a new code now.'
+        send_token(phone)
+        # re render form?
+
+    return jsonify({'code': result_code, 'msg': result_text})
+
+# @app.route('/api/confirm-subscription', methods=['POST'])
+# def confirm_sub():
+#     phone_num = request.get_json['phoneNum']
+#     user_to_confirm = crud.get_user_by_phone(phone_num)
+# Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
 
 
 @app.route('/api/unsubscribe', methods=['POST'])
@@ -113,44 +139,6 @@ def random_message():
     random_message = crud.get_random_message()
     return jsonify({"text": random_message.text, "author": random_message.author})
 
-@app.route('/api/verify-subscription', methods=['POST'])
-def confirm_sub():
-    """ Check code entered in form with code sent to user """
-    pass
-
-    # get user phone number
-    # get token sent to them
-    # get code entered
-
-    # call verify.check_verification?
-
-    # if same:
-    #   call crud.update_to_confirmed
-    # else:
-        # resend code
-        # return try again
-        
-    # token_input = request.get_json()['tokenInput']
-
-    # user = crud.get_user_by_phone(phone)
-
-    # if token_input == given token:
-    #     result_code = 'SUCCESS'
-    #     result_text = ''
-    #     crud.update_to_confirmed(user)
-    # else:
-    #     result_code = 'ERROR'
-    #     result_text = 'The code you entered was incorrect. We are sending you a new code now.'
-    #     send_token(phone)
-        # re render form?
-
-    # return jsonify({'code': result_code, 'msg': result_text})
-
-# @app.route('/api/confirm-subscription', methods=['POST'])
-# def confirm_sub():
-#     phone_num = request.get_json['phoneNum']
-#     user_to_confirm = crud.get_user_by_phone(phone_num)
-# Route to send user info from subscribe.jsx to confirm_sub to send confirmation text 
 
 if __name__ == '__main__': 
     connect_to_db(app)

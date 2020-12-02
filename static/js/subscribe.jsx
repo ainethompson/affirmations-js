@@ -27,13 +27,11 @@ function Subscribe() {
             .then(function (response) {
                 if (response.code === "SUCCESS") {
                     ReactDOM.render(
-                        <VerifySub />,
+                        <VerifySub phoneNum={formData.phoneNum}/>,
                         document.getElementById('root'))
                         // to do: Call verify component instead, find way to get name through to success page
                         // <SuccessSub name={response.msg} />,
                         // document.getElementById('root'))
-                    // // to do: trigger send message to confirm subscription
-                    // hit server to hit backend to send message
                 } else {
                     const subStatus = document.getElementById('subStatus');
                     subStatus.innerHTML = `<p>${response.msg}</p>`;

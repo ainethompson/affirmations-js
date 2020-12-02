@@ -1,6 +1,6 @@
-function VerifySub() {
+function VerifySub(props) {
 
-    const [inputCode, setInputCode] = React.useState({ inputCode: '' });
+    const [inputCode, setInputCode] = React.useState({ value: '' });
 
     const handleChange = (event) => {
         const { target } = event;
@@ -10,16 +10,17 @@ function VerifySub() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        const inputToken = {
-            inputCode: document.getElementById('tokenInput').value
+        const values = {
+            inputCode: document.getElementById('inputCode').value,
+            phoneNum: props.phoneNum
         };
 
-        fetch('/api/verify-subscription ', {
+        fetch('/api/confirm-subscription', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(inputToken),
+            body: JSON.stringify(values),
         })
             .then(response => response.json())
             .then(function (response) {
@@ -41,7 +42,7 @@ function VerifySub() {
                 <div>
                     <label>
                         Please enter the 6 digit confirmation code:
-                    <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="123456" value={inputToken.inputCode} onChange={handleChange} />
+                    <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="123456" onChange={handleChange} />
                     </label>
                 </div>
                 <input type="submit" className="btn btn-primary mb-2" value="Submit" />

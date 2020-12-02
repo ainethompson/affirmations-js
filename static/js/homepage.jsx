@@ -1,62 +1,75 @@
+const Router = ReactRouterDOM.BrowserRouter;
+const Route = ReactRouterDOM.Route;
+const Link = ReactRouterDOM.Link;
+const Prompt = ReactRouterDOM.Prompt;
+const Switch = ReactRouterDOM.Switch;
+const Redirect = ReactRouterDOM.Redirect;
+const Autocomplete = React;
+const {Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse, 
+	Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
 
 
 function Homepage() {
     
-  
+//   to do: put message generator button directly on homescreen (not linked)
     return (
         <div className="container">
             <h1>Welcome!</h1>
             <nav>
-                <ReactRouterDOM.BrowserRouter>
+                <Router>
                     <p>
-                        <ReactRouterDOM.Link to='/subscribe'>Subscribe</ReactRouterDOM.Link>
+                        <Link to='/subscribe'>Subscribe</Link>
                     </p>
+                    <p> 
+                        <Link to='/about'>About us</Link>
+                    </p>
+                    {/* <p>
+                        <Link to='/success'></Link>
+                    </p> */}
+                    {/* <p>
+                        <Link to='/confirm-subscription'>verify form</Link>
+                    </p> */}
                     <p>
-                        <ReactRouterDOM.Link to='/about'>About us</ReactRouterDOM.Link>
+                        <Link to='/unsubscribe'>Unsubscribe</Link>
                     </p>
-                    <p>
-                        <ReactRouterDOM.Link to='/success'></ReactRouterDOM.Link>
-                    </p>
-                    <p>
-                        <ReactRouterDOM.Link to='/confirm-subscription'>verify form</ReactRouterDOM.Link>
-                    </p>
-                    <p>
-                        <ReactRouterDOM.Link to='/unsubscribe'>Unsubscribe</ReactRouterDOM.Link>
-                    </p>
-                    <p>
-                        <ReactRouterDOM.Link to='/message-generator'>Message Generator</ReactRouterDOM.Link>
-                    </p>
-                    <ReactRouterDOM.Switch>
-                        <ReactRouterDOM.Route path='/subscribe'>
+                    {/* <p>
+                        <Link to='/message-generator'>Message Generator</Link>
+                    </p> */}
+                    <Switch>
+                        <Route path='/subscribe'>
                             <Subscribe />
-                        </ReactRouterDOM.Route>
-                        <ReactRouterDOM.Route path='/about'>
+                        </Route>
+                        <Route path='/about'>
                             <About />
-                        </ReactRouterDOM.Route>
-                        <ReactRouterDOM.Route path='/success'>
+                        </Route>
+                        <Route path='/success'>
                             <SuccessSub />
-                        </ReactRouterDOM.Route>
-                        <ReactRouterDOM.Route path='/message-generator'>
+                        </Route>
+                        <Route path='/message-generator'>
                             <RandomMessage />
-                        </ReactRouterDOM.Route>
-                        <ReactRouterDOM.Route path='/unsubscribe'>
+                        </Route>
+                        <Route path='/unsubscribe'>
                             <Unsubscribe />
-                        </ReactRouterDOM.Route>
-                        {/* <ReactRouterDOM.Route path='/confirm-subscription'>
+                        </Route>
+                        <Route path='/confirm-subscription'>
                             <VerifySub />
-                        </ReactRouterDOM.Route> */}
-                    </ReactRouterDOM.Switch> 
-                </ReactRouterDOM.BrowserRouter>
+                        </Route>
+                        {/* <Route>
+                            <ErrorPage />
+                        </Route> */}
+                    </Switch> 
+                </Router>
             </nav>
+            <RandomMessage />
         </div>
     );
 }
 
 
-ReactDOM.render(
-    <RandomMessage />,
-    document.querySelector('#root')
-);
+// ReactDOM.render(
+//     <RandomMessage />,
+//     document.querySelector('#root')
+// );
 
 ReactDOM.render(
     <Homepage />,
