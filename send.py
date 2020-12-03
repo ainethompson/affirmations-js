@@ -15,7 +15,7 @@ twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
 auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
 message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
 
-# twilio_number = '+15103300507'
+twilio_number = '+15103300507'
 client = Client(twilio_sid, auth_token)
 
 # TO SEND TO EVERY USER:
@@ -57,7 +57,8 @@ def send_message():
         quote = f"✨ Good morning {user.name} ✨ \n\n{text} \n\n- {author}"
 
         message = client.messages.create(to=phone,
-                                         messaging_service_sid=message_service_sid,
+                                        from_=twilio_number,
+                                        #  messaging_service_sid=message_service_sid,
                                          body=quote)
         print(message)
 
