@@ -40,8 +40,19 @@ def check_verification(phone, code):
     print(verification_check.status)
     return verification_check.status
 
+def confirm_sub(phone):
 
-def confirm_unsubscribe(phone):
+    user = crud.get_user_by_phone(phone)
+    print(user)
+
+    quote = f'{user.name} is now subscribed to ... . *something about adding positivity to life*'
+    message = client.messages.create(to=phone,
+                                    from_=twilio_number,
+                                    body=quote)
+    print(message)
+
+
+def confirm_unsub(phone):
     
     user = crud.get_user_by_phone(phone)
     # pdb.set_trace()

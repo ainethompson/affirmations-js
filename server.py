@@ -3,7 +3,7 @@ from model import Message, connect_to_db
 import crud
 import os
 import json
-from verify import send_token, check_verification, confirm_unsubscribe
+from verify import send_token, check_verification, confirm_unsub, confirm_sub
 from jinja2 import StrictUndefined
 
 secrets_dict = json.loads(open('data/secrets.json').read())
@@ -55,7 +55,7 @@ def process_subscribe():
 
 
 @app.route('/api/confirm-subscription', methods=['POST'])
-def confirm_sub():
+def verify_sub():
     """ Check code entered in form with code sent to user """
         
 
@@ -78,6 +78,7 @@ def confirm_sub():
         result_code = 'SUCCESS'
         result_text = user.name
         crud.update_to_confirmed(user)
+        confirm_sub(user.phone_num)
     else:
         result_code = 'ERROR'
         result_text = 'The code you entered was incorrect. We are sending you a new code now.'
@@ -99,7 +100,7 @@ def process_unsub():
     if user_to_remove.confirmed == True:
         result_code = 'SUCCESS'
         result_text = user_to_remove.name
-        confirm_unsubscribe(phone_num)
+        confirm_unsub(phone_num)
         crud.remove_user(user_to_remove)
 
     elif len(phone_num) == 0:
