@@ -4,6 +4,11 @@ from twilio.rest import Client
 import json
 import crud
 import pdb
+from model import connect_to_db
+
+if __name__== '__main__':
+    from server import app
+    connect_to_db(app)
 
 secrets_dict = json.loads(open('data/secrets.json').read())
 twilio_sid = secrets_dict["TWILIO_ACCOUNT_SID"]
