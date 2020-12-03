@@ -15,9 +15,12 @@ function Homepage() {
         <div>
             <Router>
                 <Container>
-                    <Navbar sticky="top">
-                        <Nav activeKey="/" className="justify-content-center" justify fill variant="tabs">
-                            <Nav.Item href='/subscribe'>
+                    <Navbar sticky="top" className="navbar">
+                        <Navbar.Brand href="/">Spark Your Day ✨</Navbar.Brand>
+                        {/* <Container> */}
+                        <Nav activeKey="/" className="navbar-nav" fill variant="tabs">
+
+                            <Nav.Item className="navbar-center" href='/subscribe'>
                                 <Nav.Link as={Link} eventKey="link-1" to='/subscribe'>Subscribe</Nav.Link>
                             </Nav.Item>
                             <Nav.Item href='/about'>
@@ -27,6 +30,7 @@ function Homepage() {
                                 <Nav.Link as={Link} eventKey="link-3" to='/unsubscribe'>Unsubscribe</Nav.Link>
                             </Nav.Item>
                         </Nav>
+                        {/* </Container> */}
                     </Navbar>
                 </Container>
                 {/* <h1 className="header">Welcome!</h1> */}
@@ -57,9 +61,11 @@ function Homepage() {
                         </Route> */}
                 </Switch>
             </Router>
-            <div className="container">
+            <Container>
+            <div className="default-container">
                 <RandomMessage />
             </div>
+            </Container>
         </div>
     );
 }

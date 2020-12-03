@@ -1,19 +1,34 @@
 
 body {
     background-image: url('/static/snow-river-sunrise.jpg');
+    text-align: center;
+    /* color: black; */
+    font-family: 'Times';
 }
 
-.container {
-    width: 85vw;
-    height: 85vh;
+.navbar, .navbar-nav, .navbar-brand {
+    width: 80vw;
+    align-items: left;
+    text-align: center;
+    background-color: whitesmoke;
+    color: rgb(43, 42, 42);
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.default-container {
+    width: 80vw;
+    height: 80vh;
     background-color: whitesmoke;
     opacity: 0.7;
-    text-align: justify;
+    text-align: center;
     font-family: 'Times';
+    vertical-align: auto;
 }
 
 .success-container {
     width: 85vw;
+    height: 85vh;
     background-color: whitesmoke;
     opacity: 0.7;
     text-align: center;
@@ -32,3 +47,11 @@ body {
 .sticky-top {
     position: sticky;
 }
+
+/* .mb-2 {
+    text-align: center;
+} */
+
+/* .btn btn-primary mb-2 { 
+
+} */
