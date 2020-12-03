@@ -20,6 +20,7 @@ account_sid = twilio_sid
 auth_token = auth_token
 client = Client(account_sid, auth_token)
 
+twilio_number = '+15103300507'
 
 def send_token(phone):
     """ Start a verification, send verification token """
@@ -48,6 +49,7 @@ def confirm_unsubscribe(phone):
 
     quote = f'{user.name} has been unsubscribed from ... . Come back any time by visiting website ...'
     message = client.messages.create(to=phone,
-                                    messaging_service_sid=message_service_sid,
+                                    # messaging_service_sid=message_service_sid,
+                                    from_=twilio_number,
                                     body=quote)
     print(message)
