@@ -97,11 +97,12 @@ def process_unsub():
 
     user_to_remove = crud.get_user_by_phone(phone_num)
 
-    if user_to_remove.confirmed == True:
-        result_code = 'SUCCESS'
-        result_text = user_to_remove.name
-        confirm_unsub(phone_num)
-        crud.remove_user(user_to_remove)
+    if user_to_remove:
+        if user_to_remove.confirmed == True:
+            result_code = 'SUCCESS'
+            result_text = user_to_remove.name
+            confirm_unsub(phone_num)
+            crud.remove_user(user_to_remove)
 
     elif len(phone_num) == 0:
         result_code = 'ERROR'

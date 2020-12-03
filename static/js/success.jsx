@@ -6,10 +6,14 @@ const Redirect = ReactRouterDOM.Redirect;
 
 function SuccessSub(props) {
     return (
-        <div className='success-container'>
+        <Container>
+        <div className='default-container'>
+            
             <h2>Success! {props.name}'s subscription has been confirmed.</h2>
             <a href='/'>Return to Homepage</a>
+            
         </div>
+        </Container>
     );
 }
 // to do: add link back to homepage
@@ -23,10 +27,12 @@ ReactDOM.render(
 function SuccessUnsub(props) {
 
     return (
-        <div className='success-container'>
+        <Container>
+        <div className='default-container'>
             <h2>Success, {props.name} has been unsubscribed. Come back any time!</h2>
             <a href='/'>Return to Homepage</a>
         </div>
+        </Container>
     );
 }
 // to do: add link back to homepage

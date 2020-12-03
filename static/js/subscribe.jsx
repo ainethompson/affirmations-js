@@ -41,6 +41,7 @@ function Subscribe() {
     }
     return (
         <div>
+            <Container>
             <Form inline className='form-group' action='/subscribe' method='POST' onSubmit={handleSubmit}>
                 <Form.Row>
                     <Col>
@@ -60,9 +61,11 @@ function Subscribe() {
                     <input type="submit" className="btn btn-primary mb-2" value="Subscribe" />
                 </Col>
             </Form>
+            
             <Row>
                 <div id="subStatus" ></div>
             </Row>
+            </Container>
         </div>
     );
 }
@@ -113,7 +116,8 @@ function Unsubscribe() {
     }
     return (
         <div>
-            <Form inline className='form-group' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
+            <Container>
+            <Form className='form-group form-horizontal' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
                 <Row>
                     <Col>
                         <Form.Label>
@@ -125,8 +129,10 @@ function Unsubscribe() {
                         <Form.Control type="submit" className="btn btn-primary mb-2" value="Unsubscribe" />
                     </Col>
                 </Row>
-            </Form>
+            
             <div id="unsubStatus" ></div>
+            </Form>
+            </Container>
         </div>
     );
 }
