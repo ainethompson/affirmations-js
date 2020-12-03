@@ -23,7 +23,7 @@ function RandomMessage() {
     }
     return (
         <div>
-            <button variant="info" action='/message-generator' className="btn" id="randMes" onClick={handleSubmit} method='POST'>Random Affirmation Generator</button>
+            <Button variant="outline-dark" size="lg" action='/message-generator' className="btn" id="randMes" onClick={handleSubmit} method='POST'>Random Affirmation Generator</Button>
             <span id="randMsg"></span>
         </div>
     );

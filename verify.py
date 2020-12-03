@@ -2,8 +2,7 @@
 import os
 from twilio.rest import Client
 import json
-import crud
-import pdb
+from crud import get_user_by_phone
 from model import connect_to_db
 
 if __name__== '__main__':
@@ -42,7 +41,7 @@ def check_verification(phone, code):
 
 def confirm_sub(phone):
 
-    user = crud.get_user_by_phone(phone)
+    user = get_user_by_phone(phone)
     print(user)
 
     quote = f'{user.name} is now subscribed to ... . *something about adding positivity to life*'
@@ -54,8 +53,7 @@ def confirm_sub(phone):
 
 def confirm_unsub(phone):
     
-    user = crud.get_user_by_phone(phone)
-    # pdb.set_trace()
+    user = get_user_by_phone(phone)
     print(user)
 
     quote = f'{user.name} has been unsubscribed from ... . Come back any time by visiting website ...'

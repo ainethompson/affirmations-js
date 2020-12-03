@@ -13,9 +13,7 @@ os.system('createdb affirmations_db')
 model.connect_to_db(server.app)
 model.db.create_all()
 
-# Load message data from json file
 with open('data/messages.json') as f:
-    # message_data = json.load(f)
     message_data = json.loads(f.read())
 
 messages_in_db = []

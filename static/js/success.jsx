@@ -6,7 +6,7 @@ const Redirect = ReactRouterDOM.Redirect;
 
 function SuccessSub(props) {
     return (
-        <div>
+        <div className='success-container'>
             <h2>Success! {props.name}'s subscription has been confirmed.</h2>
             <a href='/'>Return to Homepage</a>
         </div>
@@ -23,8 +23,8 @@ ReactDOM.render(
 function SuccessUnsub(props) {
 
     return (
-        <div>
-            <p>Success, {props.name} has been unsubscribed. Come back any time!</p>
+        <div className='success-container'>
+            <h2>Success, {props.name} has been unsubscribed. Come back any time!</h2>
             <a href='/'>Return to Homepage</a>
         </div>
     );

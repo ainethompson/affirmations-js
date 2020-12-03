@@ -43,8 +43,8 @@ function VerifySub(props) {
                 <div>
                     <p>You should receive a text with a confirmation code momentarily.</p>
                     <label>
-                        Please enter the 6 digit code:
-                    <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="123456" onChange={handleChange} />
+                        Please enter the 4 digit code:
+                    <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="1234" onChange={handleChange} />
                     </label>
                 </div>
                 <input type="submit" className="btn btn-primary mb-2" value="Submit" />
