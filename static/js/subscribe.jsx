@@ -1,5 +1,13 @@
-// const { func } = require("prop-types");
+const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse,
+    Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
+
 function Subscribe() {
+
+    // document.body.style.background="url('/static/snow-mountain-sunrise.jpg')";
+    // document.body.style.backgroundSize='cover';
+    // document.body.style.backgroundRepeat='no-repeat'
+    // document.body.style.backgroundAttachment='fixed'
+    // document.body.style.backgroundPosition='center top'
 
     const [formData, setFormData] = React.useState({ firstName: '', phoneNum: '' });
 
@@ -29,9 +37,6 @@ function Subscribe() {
                     ReactDOM.render(
                         <VerifySub phoneNum={formData.phoneNum} name={formData.firstName} />,
                         document.getElementById('root'))
-                    // to do: Call verify component instead, find way to get name through to success page
-                    // <SuccessSub name={response.msg} />,
-                    // document.getElementById('root'))
                 } else {
                     const subStatus = document.getElementById('subStatus');
                     subStatus.innerHTML = `<p>${response.msg}</p>`;
@@ -40,45 +45,56 @@ function Subscribe() {
         // .catch(error => console.log('ERROR'))
     }
     return (
-        <div>
-            <Container>
-            <Form inline className='form-group' action='/subscribe' method='POST' onSubmit={handleSubmit}>
-                <Form.Row>
-                    <Col>
-                        <Form.Label>
-                            Name:
+        <div className="sub-bg">
+            <Container className="d-flex justify-content-center">
+                <Card className="transparent-bg">
+                    <Card.Body>
+                        <Card.Title>
+                            Subscription form
+                        </Card.Title>
+                            <Form className='form-group text-center form-horizontal transparent-bg' action='/subscribe' method='POST' onSubmit={handleSubmit}>
+                                <Row>
+                                    <Col>
+                                        <Form.Group controlId="formName">
+                                            <Form.Label>
+                                                Name:
                             <Form.Control type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
-                        </Form.Label>
-                    </Col>
-                    <Col>
-                        <Form.Label>
-                            Phone Number:
+                                            </Form.Label>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Group controlId="formPhone">
+                                            <Form.Label>
+                                                Phone Number:
                             <Form.Control type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value={formData.phoneNum} placeholder="000-000-0000" onChange={handleChange} />
-                        </Form.Label>
-                    </Col>
-                </Form.Row>
-                <Col>
-                    <input type="submit" className="btn btn-primary mb-2" value="Subscribe" />
-                </Col>
-            </Form>
-            
-            <Row>
-                <div id="subStatus" ></div>
-            </Row>
+                                            </Form.Label>
+                                        </Form.Group>
+                                    </Col>
+                                    <Col>
+                                        <Form.Control type="submit" className="btn btn-dark mb-2 d-flex align-items-end" value="Subscribe" />
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <div id="subStatus" ></div>
+                                </Row>
+                            </Form>
+                    </Card.Body>
+                </Card>
+
             </Container>
         </div>
     );
 }
 
-ReactDOM.render(
-    <Subscribe />,
-    document.querySelector('#root')
-);
-
-
-
 
 function Unsubscribe() {
+
+    // document.body.style.background="url('/static/green-lagoon.jpg')";
+    // document.body.style.backgroundSize='cover';
+    // document.body.style.backgroundRepeat='no-repeat'
+    // document.body.style.backgroundAttachment='fixed'
+    // document.body.style.backgroundPosition='center top'
+
     const [phoneNum, setPhoneNum] = React.useState({ phoneNum: '' });
 
     const handleChange = (event) => {
@@ -106,7 +122,6 @@ function Unsubscribe() {
                     ReactDOM.render(
                         <SuccessUnsub name={response.msg} />,
                         document.getElementById('root'))
-                    // // to do: trigger send message to confirm un subscription
                 } else {
                     const unsubStatus = document.getElementById('unsubStatus');
                     unsubStatus.innerHTML = `<p>${response.msg}</p>`;
@@ -115,29 +130,31 @@ function Unsubscribe() {
         // .catch(error => console.log('ERROR'))
     }
     return (
-        <div>
-            <Container>
-            <Form className='form-group form-horizontal' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
-                <Row>
-                    <Col>
-                        <Form.Label>
-                            Please enter the phone number you wish to unsubscribe:
+        <div className="sub-bg">
+            <Container className="d-flex justify-content-center">
+                <Card className="transparent-bg">
+                    <Card.Body>
+                        <Card.Title>
+                            Unsubscribe form
+                        </Card.Title>
+                            <Form className='text-center form-group transparent-bg form-horizontal' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
+                                <Row>
+                                    <Col>
+                                        <Form.Label>
+                                            Please enter the phone number you wish to unsubscribe:
                             <Form.Control type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum.phoneNum} onChange={handleChange} />
-                        </Form.Label>
-                    </Col>
-                    <Col>
-                        <Form.Control type="submit" className="btn btn-primary mb-2" value="Unsubscribe" />
-                    </Col>
-                </Row>
-            
-            <div id="unsubStatus" ></div>
-            </Form>
+                                        </Form.Label>
+                                    </Col>
+                                    <Col>
+                                        <Form.Control type="submit" className="btn btn-primary mb-2" value="Unsubscribe" />
+                                    </Col>
+                                </Row>
+                                <div id="unsubStatus" ></div>
+                            </Form>
+                    </Card.Body>
+                </Card>
+
             </Container>
         </div>
     );
 }
-
-ReactDOM.render(
-    <Unsubscribe />,
-    document.querySelector('#root')
-);

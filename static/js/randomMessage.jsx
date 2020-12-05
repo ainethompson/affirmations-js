@@ -1,6 +1,6 @@
-// """ Generate random message on webpage """
+const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse,
+    Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
 
-// button 
 
 function RandomMessage() {
 
@@ -22,15 +22,9 @@ function RandomMessage() {
             });
     }
     return (
-        <div className="mb-2">
+        <React.Fragment>
             <Button variant="outline-dark" size="lg" action='/message-generator' className="btn" id="randMes" onClick={handleSubmit} method='POST'>Random Affirmation Generator</Button>
             <span id="randMsg"></span>
-        </div>
+        </React.Fragment>
     );
 }
-
-ReactDOM.render(
-    <RandomMessage />,
-    document.querySelector('#root')
-);
-

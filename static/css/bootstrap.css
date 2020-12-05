@@ -1,11 +1,39 @@
 
 body {
-    background-image: url('/static/snow-river-sunrise.jpg');
+    /* background-image: url('/static/snow-river-sunrise.jpg'); */
     text-align: center;
-    /* color: black; */
     font-family: 'Times';
 }
 
+/* body.homepage-bg {
+    background-image: url('/static/snow-river-sunrise.jpg'); */
+}
+
+/* 
+.homepage-bg {
+        background-image: url('/static/snow-river-sunrise.jpg');
+    
+} */
+
+.sub-bg {
+    background: ('/static/cloud-stairs.jpg');
+    background-size: cover;
+}
+.success-bg {
+    background-image: ('/static/bench-hill.jpg');
+}
+.about-bg {
+    background-image: ('/static/waterfall-lagoon.jpg');
+}
+
+.transparent-bg {
+    background-color: whitesmoke;
+    opacity: 0.8;
+}
+
+/* .navbar-brand {
+    font-family: 'Oregano', cursive;
+} */
 .navbar, .navbar-nav, .navbar-brand {
     width: 80vw;
     align-items: left;
@@ -16,7 +44,7 @@ body {
 
 }
 
-.default-container, .form-group {
+.default-container {
     width: 80vw;
     height: 80vh;
     background-color: whitesmoke;

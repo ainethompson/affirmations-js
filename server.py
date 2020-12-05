@@ -17,8 +17,13 @@ auth_token = secrets_dict["TWILIO_AUTH_TOKEN"]
 message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
 verify_service_sid = secrets_dict["VERIFY_SERVICE_SID"]
 
-
 @app.route('/')
+@app.route('/subscribe')
+@app.route('/about')
+@app.route('/success')
+@app.route('/message-generator')
+@app.route('/unsubscribe')
+@app.route('/confirm-subscription')
 def homepage():
     """ View Homepage. """
     return render_template('base.html')

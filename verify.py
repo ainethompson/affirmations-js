@@ -44,7 +44,7 @@ def confirm_sub(phone):
     user = get_user_by_phone(phone)
     print(user)
 
-    quote = f'{user.name} is now subscribed to ... . *something about adding positivity to life*'
+    quote = f'{user.name} is now subscribed to Spark Your Day!'
     message = client.messages.create(to=phone,
                                     from_=twilio_number,
                                     body=quote)
@@ -56,7 +56,7 @@ def confirm_unsub(phone):
     user = get_user_by_phone(phone)
     print(user)
 
-    quote = f'{user.name} has been unsubscribed from ... . Come back any time by visiting website ...'
+    quote = f'{user.name} has been unsubscribed from Spark Your Day. Come back any time!'
     message = client.messages.create(to=phone,
                                     # messaging_service_sid=message_service_sid,
                                     from_=twilio_number,

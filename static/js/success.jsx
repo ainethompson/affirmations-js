@@ -4,7 +4,18 @@ const Link = ReactRouterDOM.Link;
 const Switch = ReactRouterDOM.Switch;
 const Redirect = ReactRouterDOM.Redirect;
 
+const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse,
+    Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
+
+    
 function SuccessSub(props) {
+
+    // document.body.style.background="url('/static/waterfall-lagoon.jpg')";
+    // document.body.style.backgroundSize='cover';
+    // document.body.style.backgroundRepeat='no-repeat'
+    // document.body.style.backgroundAttachment='fixed'
+    // document.body.style.backgroundPosition='center top'
+
     return (
         <Container>
         <div className='default-container'>
@@ -26,6 +37,12 @@ ReactDOM.render(
 
 function SuccessUnsub(props) {
 
+    // document.body.style.background="url('/static/green-lagoon.jpg')";
+    // document.body.style.backgroundSize='cover';
+    // document.body.style.backgroundRepeat='no-repeat'
+    // document.body.style.backgroundAttachment='fixed'
+    // document.body.style.backgroundPosition='center top'
+
     return (
         <Container>
         <div className='default-container'>
@@ -36,8 +53,3 @@ function SuccessUnsub(props) {
     );
 }
 // to do: add link back to homepage
-
-ReactDOM.render(
-    <SuccessUnsub />,
-    document.querySelector('#root')
-);

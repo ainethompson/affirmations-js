@@ -1,3 +1,6 @@
+const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse,
+    Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
+
 function VerifySub(props) {
 
     const [inputCode, setInputCode] = React.useState({ value: '' });
@@ -34,22 +37,25 @@ function VerifySub(props) {
                     confirmStatus.innerHTML = `<p>${response.msg}</p>`;
                 }
             })
-            // .catch(error => console.log('ERROR'));
+        // .catch(error => console.log('ERROR'));
     }
 
     return (
         <div>
-            <form className='form-group' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
-                <div>
-                    <p>You should receive a text with a confirmation code momentarily.</p>
-                    <label>
-                        Please enter the 4 digit code:
+            <Container>
+                <Form className='form-group form-horizontal' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
+                    <div>
+                        <p>You should receive a text with a confirmation code momentarily.</p>
+                        <Form.Label>
+                            Please enter the 4 digit code:
                     <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="1234" onChange={handleChange} />
-                    </label>
-                </div>
-                <input type="submit" className="btn btn-primary mb-2" value="Submit" />
-            </form>
-            <div id="confirmStatus" ></div>
+                        </Form.Label>
+                    </div>
+                    <input type="submit" className="btn btn-primary mb-2" value="Submit" />
+
+                    <div id="confirmStatus" ></div>
+                </Form>
+            </Container>
         </div>
     );
 }
