@@ -111,7 +111,7 @@ def process_unsub():
 
     elif len(phone_num) == 0:
         result_code = 'ERROR'
-        result_text = "Please fill out the given fields"
+        result_text = "Please fill out the given fields."
     else:
         result_code = 'ERROR'
         result_text = "Oops! It doesn't look like this number is subscribed with us."

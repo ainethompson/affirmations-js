@@ -17,14 +17,15 @@ function RandomMessage() {
             .then(response => response.json())
             .then(function (response) {
                 const randMsg = document.getElementById('randMsg');
-                randMsg.innerHTML = `<p>${response.text}</p>
+                randMsg.innerHTML = `<p></p>
+                <p>${response.text}</p>
                     <p>- ${response.author}</p>`;
             });
     }
     return (
         <React.Fragment>
-            <Button variant="outline-dark" size="lg" action='/message-generator' className="btn" id="randMes" onClick={handleSubmit} method='POST'>Random Affirmation Generator</Button>
-            <span id="randMsg"></span>
+            <Button variant="outline-dark" size="lg" action='/message-generator' className="btn rand-msg" id="randMes" onClick={handleSubmit} method='POST'>Random Affirmation Generator</Button>
+            <span className="" id="randMsg"></span>
         </React.Fragment>
     );
 }

@@ -1,7 +1,7 @@
-// to do: write basic bio about idea for project, introducing myself, etc.
+
 function About() {
 
-    document.body.style.background="url('/static/snow-mountain-sunrise.jpg')";
+    document.body.style.background="url('/static/snow-mountain-sunrise1.jpg')";
     document.body.style.backgroundSize='cover';
     document.body.style.backgroundRepeat='no-repeat'
     document.body.style.backgroundAttachment='fixed'

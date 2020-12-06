@@ -17,14 +17,16 @@ function SuccessSub(props) {
     // document.body.style.backgroundPosition='center top'
 
     return (
-        <Container>
-        <div className='default-container'>
-            
-            <h2>Success! {props.name}'s subscription has been confirmed.</h2>
+        <div>
+            <Container className=" d-flex justify-content-center">
+                <Card className="transparent-bg text-center">
+                    <Card.Body>
+            <h3>Success! {props.name}'s subscription has been confirmed.</h3>
             <a href='/'>Return to Homepage</a>
-            
+            </Card.Body>
+                </Card>
+            </Container>
         </div>
-        </Container>
     );
 }
 // to do: add link back to homepage
@@ -44,12 +46,16 @@ function SuccessUnsub(props) {
     // document.body.style.backgroundPosition='center top'
 
     return (
-        <Container>
-        <div className='default-container'>
-            <h2>Success, {props.name} has been unsubscribed. Come back any time!</h2>
+        <div>
+            <Container className=" d-flex justify-content-center">
+                <Card className="transparent-bg text-center">
+                    <Card.Body>
+                    <h3>Success, {props.name} has been unsubscribed. Come back any time!</h3>
             <a href='/'>Return to Homepage</a>
+                    </Card.Body>
+                </Card>
+            </Container>
         </div>
-        </Container>
     );
 }
 // to do: add link back to homepage

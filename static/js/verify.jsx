@@ -42,11 +42,13 @@ function VerifySub(props) {
 
     return (
         <div>
-            <Container>
-                <Form className='form-group form-horizontal' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
+            <Container className="justify-content-center">
+                <Card className="transparent-bg text-center">
+                    <Card.Body>
+                    <Form className='form-group form-horizontal' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
                     <div>
                         <p>You should receive a text with a confirmation code momentarily.</p>
-                        <Form.Label>
+                        <Form.Label inline="true">
                             Please enter the 4 digit code:
                     <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="1234" onChange={handleChange} />
                         </Form.Label>
@@ -55,6 +57,9 @@ function VerifySub(props) {
 
                     <div id="confirmStatus" ></div>
                 </Form>
+                    </Card.Body>
+                </Card>
+                
             </Container>
         </div>
     );

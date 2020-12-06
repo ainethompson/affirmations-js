@@ -3,11 +3,11 @@ const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collap
 
 function Subscribe() {
 
-    // document.body.style.background="url('/static/snow-mountain-sunrise.jpg')";
-    // document.body.style.backgroundSize='cover';
-    // document.body.style.backgroundRepeat='no-repeat'
-    // document.body.style.backgroundAttachment='fixed'
-    // document.body.style.backgroundPosition='center top'
+    document.body.style.background="url('/static/snow-mountain-sunrise1.jpg')";
+    document.body.style.backgroundSize='cover';
+    document.body.style.backgroundRepeat='no-repeat'
+    document.body.style.backgroundAttachment='fixed'
+    document.body.style.backgroundPosition='center top'
 
     const [formData, setFormData] = React.useState({ firstName: '', phoneNum: '' });
 
@@ -45,20 +45,20 @@ function Subscribe() {
         // .catch(error => console.log('ERROR'))
     }
     return (
-        <div className="sub-bg">
+        <div>
             <Container className="d-flex justify-content-center">
-                <Card className="transparent-bg">
+                <Card className="transparent-bg align-items-center">
                     <Card.Body>
                         <Card.Title>
-                            Subscription form
+                            Welcome! Please enter your information below.
                         </Card.Title>
-                            <Form className='form-group text-center form-horizontal transparent-bg' action='/subscribe' method='POST' onSubmit={handleSubmit}>
+                            <Form className='form-group margin-30 form-horizontal' action='/subscribe' method='POST' onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
                                         <Form.Group controlId="formName">
                                             <Form.Label>
                                                 Name:
-                            <Form.Control type="text" className="form-control" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
+                            <Form.Control type="text" className="" id="firstName" name="firstName" value={formData.firstName} placeholder="First Name" onChange={handleChange} />
                                             </Form.Label>
                                         </Form.Group>
                                     </Col>
@@ -70,8 +70,11 @@ function Subscribe() {
                                             </Form.Label>
                                         </Form.Group>
                                     </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col></Col><Col></Col>
                                     <Col>
-                                        <Form.Control type="submit" className="btn btn-dark mb-2 d-flex align-items-end" value="Subscribe" />
+                                        <Form.Control type="submit" className="btn btn-secondary align-right mb-2" value="Subscribe" />
                                     </Col>
                                 </Row>
                                 <Row>
@@ -89,11 +92,11 @@ function Subscribe() {
 
 function Unsubscribe() {
 
-    // document.body.style.background="url('/static/green-lagoon.jpg')";
-    // document.body.style.backgroundSize='cover';
-    // document.body.style.backgroundRepeat='no-repeat'
-    // document.body.style.backgroundAttachment='fixed'
-    // document.body.style.backgroundPosition='center top'
+    document.body.style.background="url('/static/snow-river-sunrise.jpg')";
+    document.body.style.backgroundSize='cover';
+    document.body.style.backgroundRepeat='no-repeat'
+    document.body.style.backgroundAttachment='fixed'
+    document.body.style.backgroundPosition='center top'
 
     const [phoneNum, setPhoneNum] = React.useState({ phoneNum: '' });
 
@@ -130,25 +133,31 @@ function Unsubscribe() {
         // .catch(error => console.log('ERROR'))
     }
     return (
-        <div className="sub-bg">
+        <div>
             <Container className="d-flex justify-content-center">
                 <Card className="transparent-bg">
                     <Card.Body>
                         <Card.Title>
-                            Unsubscribe form
+                            Come back any time!
                         </Card.Title>
-                            <Form className='text-center form-group transparent-bg form-horizontal' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
+                            <Form className='form-group margin-30 form-horizontal' action='/unsubscribe' method='POST' onSubmit={handleSubmit}>
                                 <Row>
                                     <Col>
+                                    <Form.Group controlId="formPhone">
                                         <Form.Label>
                                             Please enter the phone number you wish to unsubscribe:
-                            <Form.Control type="tel" className="form-control" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum.phoneNum} onChange={handleChange} />
+                            <Form.Control type="tel" className="form-control text-left" id="phoneNum" name="phoneNum" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="000-000-0000" value={phoneNum.phoneNum} onChange={handleChange} />
                                         </Form.Label>
+                                        </Form.Group>
                                     </Col>
-                                    <Col>
-                                        <Form.Control type="submit" className="btn btn-primary mb-2" value="Unsubscribe" />
+                                    </Row>
+                                    <Row>
+                                    <Col></Col><Col></Col>
+                                    <Col className="text-right">
+                                        <Form.Control type="submit" className="btn-secondary mb-2" value="Unsubscribe" />
                                     </Col>
                                 </Row>
+                                
                                 <div id="unsubStatus" ></div>
                             </Form>
                     </Card.Body>
