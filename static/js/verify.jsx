@@ -53,7 +53,7 @@ function VerifySub(props) {
                     <input type="text" className="form-control" id="inputCode" name="inputCode" placeholder="1234" onChange={handleChange} />
                         </Form.Label>
                     </div>
-                    <input type="submit" className="btn btn-primary mb-2" value="Submit" />
+                    <input type="submit" className="btn btn-secondary mb-2" value="Submit" />
 
                     <div id="confirmStatus" ></div>
                 </Form>

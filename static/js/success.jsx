@@ -10,12 +10,6 @@ const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collap
     
 function SuccessSub(props) {
 
-    // document.body.style.background="url('/static/waterfall-lagoon.jpg')";
-    // document.body.style.backgroundSize='cover';
-    // document.body.style.backgroundRepeat='no-repeat'
-    // document.body.style.backgroundAttachment='fixed'
-    // document.body.style.backgroundPosition='center top'
-
     return (
         <div>
             <Container className=" d-flex justify-content-center">
@@ -29,7 +23,6 @@ function SuccessSub(props) {
         </div>
     );
 }
-// to do: add link back to homepage
 
 ReactDOM.render(
     <SuccessSub />,
@@ -39,11 +32,6 @@ ReactDOM.render(
 
 function SuccessUnsub(props) {
 
-    // document.body.style.background="url('/static/green-lagoon.jpg')";
-    // document.body.style.backgroundSize='cover';
-    // document.body.style.backgroundRepeat='no-repeat'
-    // document.body.style.backgroundAttachment='fixed'
-    // document.body.style.backgroundPosition='center top'
 
     return (
         <div>
@@ -58,4 +46,4 @@ function SuccessUnsub(props) {
         </div>
     );
 }
-// to do: add link back to homepage
+

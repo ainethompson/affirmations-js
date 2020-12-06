@@ -24,7 +24,7 @@ function RandomMessage() {
     }
     return (
         <React.Fragment>
-            <Button variant="outline-dark" size="lg" action='/message-generator' className="btn rand-msg" id="randMes" onClick={handleSubmit} method='POST'>Random Affirmation Generator</Button>
+            <Button variant="outline-dark" size="lg" action='/message-generator' className="btn rand-msg" id="randMes" onClick={handleSubmit} method='POST'>Affirmation Generator</Button>
             <span className="" id="randMsg"></span>
         </React.Fragment>
     );

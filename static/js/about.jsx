@@ -13,15 +13,16 @@ function About() {
                 <Card className="text-center transparent-bg">
                     <Card.Body>
                         <Card.Title>
-                            About Spark Your Day
+                            About Spark Your Day ✨
                         </Card.Title>
                         <Card.Text>
                             Welcome! My name is Áine Thompson, and I’m a student in Hackbright Academy’s software engineering bootcamp. 
                             I created this full-stack web app for my capstone project to demonstrate all that I’ve learned over the past months. 
                             My idea for this project came when my sister moved across the country to start her first job out of college. 
-                            I would set an alarm every morning to text her an affirmation or motivational message to start her day and remind her to prioritize self care. 
+                            I would set an alarm every morning to text her an affirmation or motivational message to start her day and remind her to prioritize own wellbeing. 
                             I realized, what if I could make an app to send her a message automatically without having to set my alarm? 
                             And what if anyone who could use an extra spark of motivation in the morning could sign up to receive these messages too? 
+                            I gathered some of my favorite quotes, and I hope they're able to add a bit of encouragement to your morning.
                         </Card.Text>
                     </Card.Body>
                 </Card>
