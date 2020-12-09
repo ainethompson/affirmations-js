@@ -24,11 +24,6 @@ function SuccessSub(props) {
     );
 }
 
-// ReactDOM.render(
-//     <SuccessSub />,
-//     document.querySelector('#root')
-// );
-
 
 function SuccessUnsub(props) {
 

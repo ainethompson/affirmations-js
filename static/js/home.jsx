@@ -1,7 +1,6 @@
 const { Button, Alert, Col, Row, Card, CardColumns, CardGroup, Container, Collapse,
     Form, FormControl, Nav, Navbar, Spinner, Popover } = ReactBootstrap;
 
-// const homeStyle
 
 function Home() {
 
@@ -22,7 +21,6 @@ function Home() {
                     Subscribe to receive daily texts, and if you need a pick me up in the meantime, the affirmation generator has you covered. Enjoy!
                     <Card.Text></Card.Text>
                         <RandomMessage />
-                    
                 </Card.Body>
             </Card>
             </Container>

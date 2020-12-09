@@ -27,7 +27,6 @@ function About() {
                     </Card.Body>
                 </Card>
             </Container>
-
         </div>
     );
 }

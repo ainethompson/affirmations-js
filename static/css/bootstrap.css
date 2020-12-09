@@ -1,20 +1,14 @@
 
 body {
-    /* background-image: url('/static/snow-river-sunrise.jpg'); */
-    /* text-align: center; */
+    background-image: url('/static/snow-river-sunrise.jpg');
     font-family: 'Times', cursive;
 }
 
-/* nav {
-    color: white;
-} */
 .navbar-inverse {
     background: linear-gradient(rgb(245, 245, 245, 1), rgb(245, 245, 245, 0));
 }
 
 .transparent-bg {
-    /* align-items: center; */
-    /* background: radial-gradient(rgba(245, 245, 245, 1) 40%, rgba(245, 245, 245, 0)); */
     background-color: rgba(245, 245, 245, 0.8);
     color: black;
     width: 70vw;
@@ -30,25 +24,20 @@ body {
 }
 .navbar {
     width: 100vw;
-    /* background-color: rgb(0, 0, 0, 0.7); */
     background-color: rgb(245, 245, 245, 0.7);
     color: white;
-
 }
 
 .navbar-nav {
     width: 100vw;
     align-items: baseline;
     text-align: center;
-    /* background-color: white; */
-    /* rgb(0, 0, 0, 0.7); */
     color: rgb(255, 248, 248);
     font-family: 'Times', Times, serif;
 
 }
 .margin-30 {
     margin: 30px;
-    /* padding: 20px; */
 }
 
 .rand-msg {

@@ -37,7 +37,6 @@ function VerifySub(props) {
                     confirmStatus.innerHTML = `<p>${response.msg}</p>`;
                 }
             })
-        // .catch(error => console.log('ERROR'));
     }
 
     return (
@@ -64,11 +63,4 @@ function VerifySub(props) {
         </div>
     );
 }
-
-
-
-// ReactDOM.render(
-//     <VerifySub />,
-//     document.getElementById('root')
-// );
 

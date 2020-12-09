@@ -7,8 +7,3 @@ function ErrorPage() {
         </div>
     );
 }
-
-// ReactDOM.render(
-//     <ErrorPage />,
-//     document.querySelector('#root')
-// );

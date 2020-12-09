@@ -18,16 +18,14 @@ message_service_sid = secrets_dict["MESSAGING_SERVICE_SID"]
 twilio_number = '+15103300507'
 client = Client(twilio_sid, auth_token)
 
-# TO SEND TO EVERY USER:
 all_phones = crud.get_all_confirmed_phones()
 phone_list = []
 
 for phone_num in all_phones:
-    # ('510-981-9837',) --> 510-981-9837
     phone_str = ''.join(list(phone_num))
-    raw_phone = phone_str.replace('-', '')  # 510-981-9837 --> 5109819837
+    raw_phone = phone_str.replace('-', '')
 
-    phone_list.append(f'+1{raw_phone}')  # 5109819837 --> +15109819837
+    phone_list.append(f'+1{raw_phone}')
 
 
 def send_message():
@@ -65,14 +63,6 @@ def send_message():
         crud.create_user_message(user, to_send)
 
     crud.update_to_sent(to_send)
-
-
-# schedule.every(10).seconds.do(send_message)
-# # schedule.every().day.at("19:39").do(send_message)
-
-# while True:
-#         schedule.run_pending()
-#         time.sleep(1)
 
 
 # schedule.every(10).seconds.do(send_message)
