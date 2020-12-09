@@ -54,7 +54,7 @@ def send_message():
 
         text = to_send.text
         author = to_send.author
-        quote = f"✨ Good morning {user.name} ✨ \n\n{text} \n\n- {author}"
+        quote = f"Good morning {user.name} ✨ \n\n{text} \n\n- {author}"
 
         message = client.messages.create(to=phone,
                                         from_=twilio_number,
@@ -75,8 +75,8 @@ def send_message():
 #         time.sleep(1)
 
 
-schedule.every(10).seconds.do(send_message)
-# schedule.every().day.at("03:15").do(send_message)
+# schedule.every(10).seconds.do(send_message)
+schedule.every().day.at("03:32").do(send_message)
 
 while True:
     schedule.run_pending()

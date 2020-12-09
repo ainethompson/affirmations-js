@@ -8,7 +8,7 @@ function ErrorPage() {
     );
 }
 
-ReactDOM.render(
-    <ErrorPage />,
-    document.querySelector('#root')
-);
+// ReactDOM.render(
+//     <ErrorPage />,
+//     document.querySelector('#root')
+// );

@@ -42,10 +42,10 @@ function VerifySub(props) {
 
     return (
         <div>
-            <Container className="justify-content-center">
+            <Container className="d-flex justify-content-center">
                 <Card className="transparent-bg text-center">
                     <Card.Body>
-                    <Form className='form-group form-horizontal' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
+                    <Form className='form-group margin-30 form-horizontal' action='/confirm-subscription' method='POST' onSubmit={handleSubmit}>
                     <div>
                         <p>You should receive a text with a confirmation code momentarily.</p>
                         <Form.Label inline="true">
@@ -67,8 +67,8 @@ function VerifySub(props) {
 
 
 
-ReactDOM.render(
-    <VerifySub />,
-    document.getElementById('root')
-);
+// ReactDOM.render(
+//     <VerifySub />,
+//     document.getElementById('root')
+// );
 
