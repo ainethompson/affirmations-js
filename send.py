@@ -66,7 +66,7 @@ def send_message():
 
 
 # schedule.every(10).seconds.do(send_message)
-schedule.every().day.at("0:30").do(send_message)
+schedule.every().day.at("01:00").do(send_message)
 
 while True:
     schedule.run_pending()
